@@ -9,11 +9,11 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-    { name: 'About Us', href: '#aboutus-section', current: true },
+    { name: 'About', href: '#aboutus-section', current: false },
     { name: 'Services', href: '#services-section', current: false },
+    { name: 'Products', href: '#products-section', current: false },
     { name: 'FAQ', href: '#faq-section', current: false },
-    { name: 'Blog', href: '#blog-section', current: false },
-    { name: 'Testimonial', href: '#testimonial-section', current: false },
+    { name: 'Contact', href: '#contact-section', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -22,29 +22,32 @@ function classNames(...classes: string[]) {
 
 const Data = () => {
     return (
-        <div className="rounded-md max-w-sm w-full mx-auto">
-            <div className="flex-1 space-y-4 py-1">
-                <div className="sm:block">
-                    <div className="space-y-1 px-5 pt-2 pb-3">
-                        {navigation.map((item) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className={classNames(
-                                    item.current ? 'bg-gray-900 text-purple' : 'text-black hover:bg-gray-700 hover:text-purple',
-                                    'block  py-2 rounded-md text-base font-medium'
-                                )}
-                                aria-current={item.current ? 'page' : undefined}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
-                        <div className="mt-4"></div>
-                        <button className="bg-navyblue w-full hover:text-white text-white border border-purple font-medium py-2 px-4 rounded">
-                            Contact Us
-                        </button>
-                        {/* <Contactusform /> */}
-                    </div>
+        <div className="w-full h-full flex flex-col">
+            <div className="flex-1 py-6">
+                <nav className="space-y-2 px-6">
+                    {navigation.map((item) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            className="block px-4 py-3 text-darkpurple font-semibold hover:bg-neoncyan/10 hover:text-neoncyan rounded-xl transition-all duration-300"
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
+                </nav>
+            </div>
+            
+            {/* Bottom section with contact button */}
+            <div className="px-6 py-6 border-t border-neoncyan/10">
+                <button className="w-full bg-neoncyan text-white font-semibold py-3 px-4 rounded-xl hover:bg-darkpurple transition-all duration-300">
+                    Contact Us
+                </button>
+                
+                {/* Trust indicators */}
+                <div className="mt-4 text-center">
+                    <p className="text-xs text-darkpurple/60">
+                        Trusted by 500+ enterprises
+                    </p>
                 </div>
             </div>
         </div>

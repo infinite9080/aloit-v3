@@ -1,13 +1,50 @@
 "use client"
 import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/20/solid'
+import { useState, useEffect, useRef } from 'react'
 
 const FAQ = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            const currentRef = sectionRef.current;
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, []);
+
     return (
-        <div id="faq-section" className='mx-auto max-w-7xl py-24 lg:px-8 bg-faqblue rounded-2xl my-16 faq-bg'>
-            <h3 className='text-xl font-normal text-white text-center mb-6'>FAQ</h3>
-            <h2 className='text-4xl lg:text-6xl font-semibold text-center text-white'>Frequently asked <br /> questions.</h2>
-            <div className="w-full px-4 pt-16">
+        <div id="faq-section" className='mx-auto max-w-7xl py-24 lg:px-8 bg-faqblue rounded-2xl my-16 faq-bg' ref={sectionRef}>
+            <div className={`transition-all duration-1000 ease-out ${isVisible
+                ? 'opacity-100 transform translate-y-0'
+                : 'opacity-0 transform translate-y-10'
+                }`}>
+                <h3 className='text-xl font-normal text-white text-center mb-6'>FAQ</h3>
+                <h2 className='text-4xl lg:text-6xl font-semibold text-center text-white'>Frequently asked <br /> questions.</h2>
+            </div>
+            <div className={`w-full px-4 pt-16 transition-all duration-1200 ease-out delay-300 ${isVisible
+                ? 'opacity-100 transform translate-y-0'
+                : 'opacity-0 transform translate-y-10'
+                }`}>
                 <div className="mx-auto w-full max-w-5xl rounded-2xl bg-white py-8 px-6 mb-5">
                     <Disclosure>
                         {({ open }) => (

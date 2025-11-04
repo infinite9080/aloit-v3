@@ -16,7 +16,7 @@ const postData: DataType[] = [
     {
         heading: 'nIAM - Identity Access Management',
         description: 'Comprehensive identity and access management solution that provides secure authentication, authorization, and user lifecycle management for your organization.',
-        imgSrc: '/niam-feature.png',
+        imgSrc: '/niam-feature.jpeg',
     },
     {
         heading: 'nAMS - Audit Management Software',
@@ -26,7 +26,7 @@ const postData: DataType[] = [
     {
         heading: 'nBsuits - Enterprise Resource Planning',
         description: 'Integrated ERP solution that manages your business operations, from finance and HR to supply chain and customer relationships in one unified platform.',
-        imgSrc: '/nbsuits-feature.png',
+        imgSrc: '/nbsuits-feature.jpeg',
     },
     {
         heading: 'nISMA - Security Maturity Assessment',
@@ -41,7 +41,7 @@ const postData: DataType[] = [
     {
         heading: 'nERIM - Risk Management Software',
         description: 'Comprehensive enterprise risk management platform that identifies, assesses, and mitigates risks across your organization with real-time monitoring.',
-        imgSrc: '/nERIM-feature.png',
+        imgSrc: '/nerim-feature.jpeg',
     }
 ]
 
@@ -124,12 +124,12 @@ const FeaturedProducts = () => {
     };
 
     return (
-        <div className="bg-bgblue py-20 marginFeature bg-featured" ref={sectionRef}>
+        <div id="products-section" className="bg-bgblue marginFeature bg-featured" ref={sectionRef}>
             <div className='mx-auto max-w-7xl sm:py-4 lg:px-8'>
 
-                <div className={`text-center pt-48 pb-10 md:pt-96 transition-all duration-1000 ease-out ${isVisible
-                        ? 'opacity-100 transform translate-y-0'
-                        : 'opacity-0 transform translate-y-10'
+                <div className={`text-center mt-60 pt-48 pb-10 md:pt-96 transition-all duration-1000 ease-out ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
                     }`}>
                     <h3 className="text-4xl sm:text-6xl font-bold text-white my-2">Featured Products.</h3>
                     <h3 className="text-4xl sm:text-6xl font-bold text-white text-opacity-50 lg:mr-48 my-2">Featured Products.</h3>
@@ -137,29 +137,29 @@ const FeaturedProducts = () => {
                 </div>
 
                 <div className={`transition-all duration-1200 ease-out delay-300 ${isVisible
-                        ? 'opacity-100 transform translate-y-0'
-                        : 'opacity-0 transform translate-y-10'
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
                     }`}>
                     <Slider {...settings}>
                         {postData.map((items, i) => (
                             <div key={i}>
                                 <div className='bg-transparent m-3 pb-12 my-10 rounded-3xl'>
                                     <div className={`transition-all duration-1000 ease-out ${isVisible
-                                            ? 'opacity-100 transform scale-100'
-                                            : 'opacity-0 transform scale-95'
+                                        ? 'opacity-100 transform scale-100'
+                                        : 'opacity-0 transform scale-95'
                                         }`} style={{ transitionDelay: `${i * 200 + 500}ms` }}>
                                         <Image src={items.imgSrc} alt={items.heading} width={636} height={620} className="rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300" />
                                     </div>
                                     <div className="w-345">
                                         <h4 className={`sm:text-4xl font-bold sm:pt-6 text-center sm:text-start mt-10 text-white transition-all duration-1000 ease-out ${isVisible
-                                                ? 'opacity-100 transform translate-x-0'
-                                                : 'opacity-0 transform -translate-x-5'
+                                            ? 'opacity-100 transform translate-x-0'
+                                            : 'opacity-0 transform -translate-x-5'
                                             }`} style={{ transitionDelay: `${i * 200 + 700}ms` }}>
                                             {items.heading}
                                         </h4>
                                         <p className={`text-lg font-normal text-white/80 text-center sm:text-start mt-4 leading-relaxed transition-all duration-1000 ease-out ${isVisible
-                                                ? 'opacity-100 transform translate-x-0'
-                                                : 'opacity-0 transform -translate-x-5'
+                                            ? 'opacity-100 transform translate-x-0'
+                                            : 'opacity-0 transform -translate-x-5'
                                             }`} style={{ transitionDelay: `${i * 200 + 900}ms` }}>
                                             {items.description}
                                         </p>

@@ -1,6 +1,7 @@
 import './globals.css';
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/index';
+import WhatsAppFloat from './components/WhatsAppFloat/index';
 
 export const metadata = {
   title: 'desgy',
@@ -18,6 +19,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   )

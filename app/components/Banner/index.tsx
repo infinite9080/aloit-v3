@@ -2,8 +2,8 @@
 
 "use client";
 
-
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Banner = () => {
 
@@ -137,27 +137,167 @@ const Banner = () => {
                     </div>
                 </div>
 
-                {/* COLUMN-2 - Video */}
+                {/* COLUMN-2 - Animated Security Illustration */}
                 <div className='order-1 lg:order-2 relative lg:-mr-24 lg:ml-0 xl:-mr-32 xl:ml-0 2xl:-mr-48 2xl:ml-0'>
                     <div className="flex justify-center items-center h-full">
-                        <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-6xl xl:max-w-7xl 2xl:max-w-none">
-                            <video
-                                width={1200}
-                                height={960}
-                                className="w-full h-auto mx-auto block rounded-2xl shadow-2xl"
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                            >
-                                <source src="/Blue Purple Modern Animated Computer Science Presentation(1).mp4" type="video/mp4" />
-                                <source src="/Blue-Purple-Modern-Animated-Co-unscreen.webm" type="video/webm" />
-                                Your browser does not support the video tag.
-                            </video>
+                        <div className="relative w-full max-w-lg h-96">
+                            {/* Central Shield */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="relative">
+                                    {/* Outer rotating ring */}
+                                    <div className="w-64 h-64 border-4 border-neoncyan/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+
+                                    {/* Middle pulsing ring */}
+                                    <div className="absolute inset-4 w-56 h-56 border-2 border-neoncyan/50 rounded-full animate-pulse"></div>
+
+                                    {/* Inner shield */}
+                                    <div className="absolute inset-8 w-48 h-48 bg-gradient-to-br from-neoncyan/20 to-darkpurple/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-neoncyan/40">
+                                        {/* Shield Icon */}
+                                        <svg className="w-24 h-24 text-neoncyan animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Floating threat indicators */}
+                            <div className="absolute top-8 left-8 w-8 h-8 bg-red-500/80 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                            <div className="absolute top-16 right-12 w-6 h-6 bg-red-500/80 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
+                            <div className="absolute bottom-20 left-16 w-7 h-7 bg-red-500/80 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+                            <div className="absolute bottom-12 right-8 w-5 h-5 bg-red-500/80 rounded-full animate-bounce" style={{ animationDelay: '1.5s' }}></div>
+
+                            {/* Blocked threat animations */}
+                            <div className="absolute top-8 left-8 w-8 h-8 border-2 border-green-500 rounded-full animate-ping opacity-75"></div>
+                            <div className="absolute top-16 right-12 w-6 h-6 border-2 border-green-500 rounded-full animate-ping opacity-75" style={{ animationDelay: '0.5s' }}></div>
+                            <div className="absolute bottom-20 left-16 w-7 h-7 border-2 border-green-500 rounded-full animate-ping opacity-75" style={{ animationDelay: '1s' }}></div>
+                            <div className="absolute bottom-12 right-8 w-5 h-5 border-2 border-green-500 rounded-full animate-ping opacity-75" style={{ animationDelay: '1.5s' }}></div>
+
+                            {/* Data flow lines */}
+                            <div className="absolute inset-0">
+                                <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-neoncyan/50 to-transparent animate-pulse"></div>
+                                <div className="absolute top-0 left-1/2 w-0.5 h-full bg-gradient-to-b from-transparent via-neoncyan/50 to-transparent animate-pulse" style={{ animationDelay: '1s' }}></div>
+                            </div>
+
+                            {/* Corner security nodes */}
+                            <div className="absolute top-4 left-4 w-4 h-4 bg-neoncyan rounded-full animate-pulse"></div>
+                            <div className="absolute top-4 right-4 w-4 h-4 bg-neoncyan rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                            <div className="absolute bottom-4 left-4 w-4 h-4 bg-neoncyan rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                            <div className="absolute bottom-4 right-4 w-4 h-4 bg-neoncyan rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+
+                        
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            {/* Company Logos Section */}
+            <div className="mt-16 pt-8 border-t border-gray-100">
+                <div className="text-center mb-8">
+                    <p className="text-sm font-semibold text-darkpurple/60 tracking-wide uppercase">
+                        Trusted by leading organizations
+                    </p>
+                </div>
+                
+                {/* Rotating Company Logos */}
+                <div className="overflow-hidden relative">
+                    <div 
+                        className="flex space-x-8 animate-scroll-left"
+                        style={{
+                            animation: 'scroll-left 30s linear infinite',
+                            width: 'calc(200% + 2rem)'
+                        }}
+                    >
+                        {/* First set of logos */}
+                        {[
+                            { name: "owasa", logo: "/owasa.png" },
+                            { name: "Google", logo: "/images/companies/google-logo.png" },
+                            { name: "Amazon", logo: "/images/companies/amazon-logo.png" },
+                            { name: "IBM", logo: "/images/companies/ibm-logo.png" },
+                            { name: "Oracle", logo: "/images/companies/oracle-logo.png" },
+                            { name: "Cisco", logo: "/images/companies/cisco-logo.png" },
+                            { name: "Dell", logo: "/images/companies/dell-logo.png" },
+                            { name: "HP", logo: "/images/companies/hp-logo.png" },
+                            { name: "Intel", logo: "/images/companies/intel-logo.png" },
+                            { name: "VMware", logo: "/images/companies/vmware-logo.png" },
+                            { name: "Salesforce", logo: "/images/companies/salesforce-logo.png" },
+                            { name: "Adobe", logo: "/images/companies/adobe-logo.png" }
+                        ].map((company, index) => (
+                            <div
+                                key={index}
+                                className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 mx-2"
+                            >
+                                <Image
+                                    src={company.logo}
+                                    alt={`${company.name} logo`}
+                                    width={120}
+                                    height={60}
+                                    className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                                />
+                            </div>
+                        ))}
+                        {/* Duplicate set for seamless loop */}
+                        {[
+                            { name: "Microsoft", logo: "/images/companies/microsoft-logo.png" },
+                            { name: "Google", logo: "/images/companies/google-logo.png" },
+                            { name: "Amazon", logo: "/images/companies/amazon-logo.png" },
+                            { name: "IBM", logo: "/images/companies/ibm-logo.png" },
+                            { name: "Oracle", logo: "/images/companies/oracle-logo.png" },
+                            { name: "Cisco", logo: "/images/companies/cisco-logo.png" },
+                            { name: "Dell", logo: "/images/companies/dell-logo.png" },
+                            { name: "HP", logo: "/images/companies/hp-logo.png" },
+                            { name: "Intel", logo: "/images/companies/intel-logo.png" },
+                            { name: "VMware", logo: "/images/companies/vmware-logo.png" },
+                            { name: "Salesforce", logo: "/images/companies/salesforce-logo.png" },
+                            { name: "Adobe", logo: "/images/companies/adobe-logo.png" }
+                        ].map((company, index) => (
+                            <div
+                                key={`duplicate-${index}`}
+                                className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 mx-2"
+                            >
+                                <Image
+                                    src={company.logo}
+                                    alt={`${company.name} logo`}
+                                    width={120}
+                                    height={60}
+                                    className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Add CSS animation */}
+                <style jsx>{`
+                    @keyframes scroll-left {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+                `}</style>
+
+                {/* Trust Indicators */}
+                <div className='flex flex-wrap justify-center gap-6 mt-12'>
+                    <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
+                        <span className='text-sm text-darkpurple/70 font-medium'>500+ Enterprise Clients</span>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
+                        <span className='text-sm text-darkpurple/70 font-medium'>99.9% Uptime</span>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
+                        <span className='text-sm text-darkpurple/70 font-medium'>ISO 27001 Certified</span>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
+                        <span className='text-sm text-darkpurple/70 font-medium'>24/7 Support</span>
+                    </div>
+                </div>
             </div>
         </div>
     )

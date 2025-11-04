@@ -1,8 +1,35 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const ServicesSection = () => {
     const [activeCategory, setActiveCategory] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.2, // Trigger when 20% of the section is visible
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            const currentRef = sectionRef.current;
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, []);
 
     const serviceCategories = [
         {
@@ -245,29 +272,45 @@ const ServicesSection = () => {
     ];
 
     return (
-        <section className="py-32">
-            <div className='mx-auto max-w-2xl lg:max-w-7xl sm:py-4 lg:px-8'>
-                {/* Section Title - Matching Products Style */}
-                <div className="text-center mb-16">
-                    <h3 className="text-4xl sm:text-6xl font-bold text-black my-2">Our Services.</h3>
-                    <h3 className="text-4xl sm:text-6xl font-bold text-black opacity-50 lg:mr-48 my-2">Our Services.</h3>
-                    <h3 className="text-4xl sm:text-6xl font-bold text-black opacity-25 lg:-mr-32 my-2">Our Services.</h3>
+        <section id="services-section" className="py-32 bg-white relative overflow-hidden" ref={sectionRef}>
+            {/* Subtle Background Elements */}
+            <div className={`absolute inset-0 opacity-5 transition-all duration-1000 ease-out ${isVisible
+                ? 'opacity-5 transform translate-y-0'
+                : 'opacity-0 transform translate-y-10'
+                }`}>
+                <div className="absolute top-20 left-10 w-32 h-32 border border-neoncyan/20 rounded-full animate-pulse"></div>
+                <div className="absolute bottom-20 right-10 w-24 h-24 border border-neoncyan/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-neoncyan/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+            </div>
+
+            <div className='mx-auto max-w-7xl px-4 lg:px-8 relative z-10'>
+                {/* Section Title */}
+                <div className={`text-center mb-16 transition-all duration-1000 ease-out ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
+                    <h3 className="text-4xl sm:text-6xl font-bold text-darkpurple my-2">Our Services.</h3>
+                    <h3 className="text-4xl sm:text-6xl font-bold text-darkpurple opacity-50 lg:mr-48 my-2">Our Services.</h3>
+                    <h3 className="text-4xl sm:text-6xl font-bold text-darkpurple opacity-25 lg:-mr-32 my-2">Our Services.</h3>
                 </div>
 
                 {/* Category Navigation */}
-                <div className="mb-16">
+                <div className={`mb-16 transition-all duration-1200 ease-out delay-200 ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
                     <div className="flex flex-wrap justify-center gap-4">
                         {serviceCategories.map((category, index) => (
                             <button
                                 key={index}
                                 onClick={() => setActiveCategory(index)}
-                                className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300 shadow-xl ${activeCategory === index
-                                    ? "bg-neoncyan text-white scale-105"
-                                    : "bg-white text-darkpurple hover:bg-lightgrey hover:text-neoncyan border border-gray-100"
+                                className={`flex items-center gap-3 px-6 py-3 rounded-2xl transition-all duration-200 shadow-lg backdrop-blur-sm border ${activeCategory === index
+                                    ? "bg-neoncyan text-white shadow-neoncyan/25 border-neoncyan/50"
+                                    : "bg-white/80 text-darkpurple hover:bg-neoncyan/10 hover:text-neoncyan border-neoncyan/20 hover:border-neoncyan/40"
                                     }`}
                             >
                                 <span className="w-6 h-6 flex items-center justify-center">{category.icon}</span>
-                                <span className="font-bold text-sm lg:text-base whitespace-nowrap">
+                                <span className="font-semibold text-sm lg:text-base whitespace-nowrap">
                                     {category.title}
                                 </span>
                             </button>
@@ -276,46 +319,77 @@ const ServicesSection = () => {
                 </div>
 
                 {/* Active Category Services */}
-                <div className="mb-20">
+                <div className={`mb-20 transition-all duration-1200 ease-out delay-400 ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {serviceCategories[activeCategory].services.map((service, index) => (
                             <div
                                 key={index}
-                                className="bg-white py-14 px-8 text-center shadow-xl rounded-3xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
+                                className={`relative bg-white py-10 px-8 text-center shadow-lg rounded-3xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100 hover:border-neoncyan/30 overflow-hidden ${isVisible
+                                    ? 'opacity-100 transform scale-100'
+                                    : 'opacity-0 transform scale-95'
+                                    }`}
+                                style={{ transitionDelay: `${index * 150 + 600}ms` }}
                             >
-                                {/* Icon Container - Matching Products Style */}
-                                <div className='relative flex items-center justify-center w-24 h-24 mx-auto mb-8 bg-lightgrey rounded-2xl group-hover:bg-neoncyan/10 transition-colors duration-300'>
-                                    <div className="text-neoncyan group-hover:scale-110 transition-transform duration-300">
-                                        {service.icon}
+                                {/* Hover Background Effect */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-neoncyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                                {/* Content */}
+                                <div className="relative z-10">
+                                    {/* Icon Container */}
+                                    <div className='relative flex items-center justify-center w-24 h-24 mx-auto mb-8 bg-gradient-to-br from-neoncyan/10 to-neoncyan/5 rounded-full group-hover:from-neoncyan/20 group-hover:to-neoncyan/10 transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-neoncyan/20'>
+                                        <div className="text-neoncyan transition-all duration-300 group-hover:text-neoncyan">
+                                            {service.icon}
+                                        </div>
+                                        {/* Icon glow effect */}
+                                        <div className="absolute inset-0 bg-neoncyan/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
                                     </div>
+
+                                    {/* Title */}
+                                    <h4 className='text-2xl font-bold text-darkpurple mb-4 group-hover:text-neoncyan transition-colors duration-300 leading-tight'>
+                                        {service.title}
+                                    </h4>
+
+                                    {/* Description */}
+                                    <p className='text-base font-normal text-darkpurple/70 leading-relaxed group-hover:text-darkpurple/90 transition-colors duration-300 mb-6'>
+                                        {service.description}
+                                    </p>
+
+
                                 </div>
-
-                                {/* Title - Matching Products Style */}
-                                <h4 className='text-3xl font-bold text-neoncyan mb-4 group-hover:scale-105 transition-transform duration-300'>
-                                    {service.title}
-                                </h4>
-
-                                {/* Description - Matching Products Style */}
-                                <h3 className='text-lg font-normal opacity-50 leading-relaxed group-hover:opacity-70 transition-opacity duration-300'>
-                                    {service.description}
-                                </h3>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Call to Action */}
-                <div className="text-center">
-                    <div className="bg-neoncyan py-14 px-8 rounded-3xl shadow-xl">
-                        <h3 className="text-4xl font-bold text-white mb-6 leading-tight">
-                            Ready to Secure Your Digital Future?
-                        </h3>
-                        <p className="text-white/90 text-xl mb-8 leading-relaxed max-w-3xl mx-auto opacity-90">
-                            Let our cybersecurity experts assess your current security posture and design a comprehensive protection strategy tailored to your business needs.
-                        </p>
-                        <button className="bg-white text-neoncyan px-12 py-4 rounded-full font-bold text-xl hover:bg-lightgrey transition-all duration-300 hover:scale-105 shadow-xl">
-                            Get Your Security Assessment
-                        </button>
+                <div className={`text-center transition-all duration-1200 ease-out delay-600 ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
+                    <div className="bg-gradient-to-br from-neoncyan via-neoncyan/95 to-neoncyan/90 py-14 px-8 rounded-3xl shadow-2xl backdrop-blur-sm border border-neoncyan/30 relative overflow-hidden">
+                        {/* Background pattern */}
+                        <div className="absolute inset-0 opacity-10">
+                            <div className="absolute top-4 right-4 w-16 h-16 border border-white/30 rounded-full animate-pulse"></div>
+                            <div className="absolute bottom-4 left-4 w-12 h-12 border border-white/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                        </div>
+
+                        <div className="relative z-10">
+                            <h3 className="text-3xl sm:text-4xl font-black text-white mb-6 leading-tight">
+                                Ready to Secure Your <span className="text-white/90">Digital Future?</span>
+                            </h3>
+                            <p className="text-white/90 text-lg mb-8 leading-relaxed max-w-3xl mx-auto">
+                                Let our cybersecurity experts assess your current security posture and design a comprehensive protection strategy tailored to your business needs.
+                            </p>
+                            <button className="group bg-white text-neoncyan px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/90 hover:text-darkpurple transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl inline-flex items-center gap-3">
+                                <span>Get Your Security Assessment</span>
+                                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

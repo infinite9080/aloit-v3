@@ -9,14 +9,13 @@ import Featured from './components/Featured/index';
 import Manage from './components/Manage/index';
 import FAQ from './components/FAQ/index';
 import Testimonials from './components/Testimonials/index';
-import Articles from './components/Articles/index';
 import Joinus from './components/Joinus/index';
 import Insta from './components/Insta/index';
 
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-20">
       <Banner />
       <Aboutus />
       <Dedicated />
@@ -28,7 +27,6 @@ export default function Home() {
       <Manage />
       <FAQ />
       <Testimonials />
-      <Articles />
       <Joinus />
       <Insta />
     </main>

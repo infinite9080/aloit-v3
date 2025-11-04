@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image';
+import { useState, useEffect, useRef } from 'react';
 
 const products = [
     {
@@ -95,19 +96,53 @@ const products = [
 ];
 
 const ProductDeepDive = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            const currentRef = sectionRef.current;
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, []);
+
     return (
-        <div id="products-section">
+        <div id="products-section" ref={sectionRef}>
             <div className='mx-auto max-w-7xl sm:py-20 lg:px-8 my-16'>
 
                 {/* Section Title - Matching Other Sections */}
-                <div className="text-center mb-16">
+                <div className={`text-center mb-16 transition-all duration-1000 ease-out ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
                     <h3 className="text-4xl sm:text-6xl font-bold text-black my-2">Product Deep Dive.</h3>
                     <h3 className="text-4xl sm:text-6xl font-bold text-black opacity-50 lg:mr-48 my-2">Product Deep Dive.</h3>
                     <h3 className="text-4xl sm:text-6xl font-bold text-black opacity-25 lg:-mr-32 my-2">Product Deep Dive.</h3>
                 </div>
 
                 {/* Benefits Section */}
-                <div className='md:flex md:justify-around mt-20 mb-16'>
+                <div className={`md:flex md:justify-around mt-20 mb-16 transition-all duration-1200 ease-out delay-200 ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
                     <div className='flex gap-5 justify-center md:justify-start mb-4 md:mb-0'>
                         <Image src="/images/manage/right.svg" alt="right-icon" width={21} height={14} />
                         <h4 className='text-lg font-semibold'>Enterprise-Grade Security</h4>
@@ -123,9 +158,19 @@ const ProductDeepDive = () => {
                 </div>
 
                 {/* Products Grid */}
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-16 mx-5 gap-8'>
+                <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-16 mx-5 gap-8 transition-all duration-1200 ease-out delay-400 ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
                     {products.map((product, i) => (
-                        <div className='bg-white shadow-xl rounded-3xl text-center p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2' key={i}>
+                        <div 
+                            className={`bg-white shadow-xl rounded-3xl text-center p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${isVisible
+                                ? 'opacity-100 transform scale-100'
+                                : 'opacity-0 transform scale-95'
+                                }`}
+                            style={{ transitionDelay: `${i * 150 + 600}ms` }}
+                            key={i}
+                        >
 
                             {/* Product Logo */}
                             <div className='flex items-center justify-center w-24 h-24 mx-auto mb-6 bg-lightgrey rounded-2xl'>
