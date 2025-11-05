@@ -53,6 +53,11 @@ const Contactusform = () => {
                         Contact
                     </button>
                 </div>
+                <div className='lg:hidden'>
+                    <button type="button" className='text-sm font-semibold bg-neoncyan text-white py-2 px-3 rounded-full hover:bg-darkpurple transition-all duration-300 shadow-md hover:shadow-lg' onClick={openModal}>
+                        Contact
+                    </button>
+                </div>
             </div>
 
             <Transition appear show={isOpen} as={Fragment}>
@@ -80,15 +85,15 @@ const Contactusform = () => {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-sm sm:max-w-md lg:max-w-lg transform overflow-hidden rounded-2xl bg-white p-4 sm:p-6 text-left align-middle shadow-xl transition-all mx-4">
 
-                                    <div className="py-8 lg:py-8 px-4 mx-auto max-w-screen-md">
+                                    <div className="py-6 sm:py-8 px-2 sm:px-4 mx-auto max-w-screen-md">
                                         <div className="flex flex-shrink-0 items-center justify-center">
-                                            <Link href="/" className='text-2xl sm:text-4xl font-semibold text-black'>
-                                                Alo
+                                            <Link href="/" className='text-xl sm:text-2xl lg:text-3xl font-semibold text-black'>
+                                                Aloit Consultants
                                             </Link>
                                         </div>
-                                        <p className="mb-8 lg:mb-16 mt-8 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Contact us now? Want to send us a feedback?</p>
+                                        <p className="mb-6 sm:mb-8 lg:mb-12 mt-6 sm:mt-8 font-light text-center text-gray-500 text-sm sm:text-base lg:text-lg">Contact us now? Want to send us feedback?</p>
                                         <form action="#" className="space-y-8" onSubmit={handleSubmit}>
                                             <div>
                                                 <label htmlFor="text" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your Name</label>

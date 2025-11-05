@@ -12,13 +12,7 @@ const Banner = () => {
     const [isTyping, setIsTyping] = useState(true);
 
     useEffect(() => {
-        const rotatingTexts = [
-            "Digital Future",
-            "Cyber Defense",
-            "Data Protection",
-            "Zero Trust",
-            "Cloud Security"
-        ];
+        const rotatingTexts = ["nAMS", "nIAM", "nBsuits", "nBoard", "nERIM", "nISMA"];
         const currentText = rotatingTexts[currentTextIndex];
         let timeoutId: NodeJS.Timeout;
 
@@ -66,7 +60,7 @@ const Banner = () => {
                                 <div className="absolute inset-0 w-3 h-3 bg-neoncyan/70 rounded-full animate-ping opacity-75"></div>
                             </div>
                             <span className="text-sm font-semibold text-darkpurple tracking-wide">
-                                TRUSTED BY 500+ ENTERPRISES
+                                Trusted by Businesses That Matter
                             </span>
                         </div>
                     </div>
@@ -75,16 +69,16 @@ const Banner = () => {
                     <div className="mb-8 lg:mb-10">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight">
                             <div className="mb-2">
-                                <span className="text-darkpurple">Secure Your</span>
-                            </div>
-                            <div className="mb-2">
+                                <span className="text-darkpurple">Experience The Power of </span>
                                 <span className="text-neoncyan font-extrabold">
                                     {displayedText}
                                     <span className="animate-blink">|</span>
                                 </span>
                             </div>
+
                             <div className="text-darkpurple text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mt-4">
-                                with enterprise-grade cybersecurity
+                                Building Trust in Every System We Touch.
+
                             </div>
                         </h1>
                     </div>
@@ -92,9 +86,9 @@ const Banner = () => {
                     {/* Subtitle */}
                     <div className="mb-10 lg:mb-12">
                         <p className="text-lg sm:text-xl md:text-2xl text-darkpurple leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                            Protect your business with AI-powered threat detection,
-                            <span className="font-semibold text-neoncyan"> zero-trust architecture</span>,
-                            and comprehensive compliance solutions.
+                            AloIT Consultants delivers compliance driven, security focused  <span className="font-semibold text-neoncyan"> IT solutions</span> that safeguard your business.
+
+
                         </p>
                     </div>
 
@@ -140,20 +134,20 @@ const Banner = () => {
                 {/* COLUMN-2 - Animated Security Illustration */}
                 <div className='order-1 lg:order-2 relative lg:-mr-24 lg:ml-0 xl:-mr-32 xl:ml-0 2xl:-mr-48 2xl:ml-0'>
                     <div className="flex justify-center items-center h-full">
-                        <div className="relative w-full max-w-lg h-96">
+                        <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg h-64 sm:h-80 lg:h-96">
                             {/* Central Shield */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="relative">
                                     {/* Outer rotating ring */}
-                                    <div className="w-64 h-64 border-4 border-neoncyan/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
+                                    <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 border-2 sm:border-3 lg:border-4 border-neoncyan/30 rounded-full animate-spin" style={{ animationDuration: '20s' }}></div>
 
                                     {/* Middle pulsing ring */}
-                                    <div className="absolute inset-4 w-56 h-56 border-2 border-neoncyan/50 rounded-full animate-pulse"></div>
+                                    <div className="absolute inset-3 sm:inset-4 w-42 h-42 sm:w-48 sm:h-48 lg:w-56 lg:h-56 border border-neoncyan/50 rounded-full animate-pulse"></div>
 
                                     {/* Inner shield */}
-                                    <div className="absolute inset-8 w-48 h-48 bg-gradient-to-br from-neoncyan/20 to-darkpurple/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-neoncyan/40">
+                                    <div className="absolute inset-6 sm:inset-7 lg:inset-8 w-36 h-36 sm:w-42 sm:h-42 lg:w-48 lg:h-48 bg-gradient-to-br from-neoncyan/20 to-darkpurple/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-neoncyan/40">
                                         {/* Shield Icon */}
-                                        <svg className="w-24 h-24 text-neoncyan animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                                        <svg className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-neoncyan animate-pulse" fill="currentColor" viewBox="0 0 20 20">
                                             <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                         </svg>
                                     </div>
@@ -184,7 +178,7 @@ const Banner = () => {
                             <div className="absolute bottom-4 left-4 w-4 h-4 bg-neoncyan rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                             <div className="absolute bottom-4 right-4 w-4 h-4 bg-neoncyan rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
 
-                        
+
                         </div>
                     </div>
                 </div>
@@ -198,92 +192,25 @@ const Banner = () => {
                         Trusted by leading organizations
                     </p>
                 </div>
-                
-                {/* Rotating Company Logos */}
-                <div className="overflow-hidden relative">
-                    <div 
-                        className="flex space-x-8 animate-scroll-left"
-                        style={{
-                            animation: 'scroll-left 30s linear infinite',
-                            width: 'calc(200% + 2rem)'
-                        }}
-                    >
-                        {/* First set of logos */}
-                        {[
-                            { name: "owasa", logo: "/owasa.png" },
-                            { name: "Google", logo: "/images/companies/google-logo.png" },
-                            { name: "Amazon", logo: "/images/companies/amazon-logo.png" },
-                            { name: "IBM", logo: "/images/companies/ibm-logo.png" },
-                            { name: "Oracle", logo: "/images/companies/oracle-logo.png" },
-                            { name: "Cisco", logo: "/images/companies/cisco-logo.png" },
-                            { name: "Dell", logo: "/images/companies/dell-logo.png" },
-                            { name: "HP", logo: "/images/companies/hp-logo.png" },
-                            { name: "Intel", logo: "/images/companies/intel-logo.png" },
-                            { name: "VMware", logo: "/images/companies/vmware-logo.png" },
-                            { name: "Salesforce", logo: "/images/companies/salesforce-logo.png" },
-                            { name: "Adobe", logo: "/images/companies/adobe-logo.png" }
-                        ].map((company, index) => (
-                            <div
-                                key={index}
-                                className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 mx-2"
-                            >
-                                <Image
-                                    src={company.logo}
-                                    alt={`${company.name} logo`}
-                                    width={120}
-                                    height={60}
-                                    className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-                                />
-                            </div>
-                        ))}
-                        {/* Duplicate set for seamless loop */}
-                        {[
-                            { name: "Microsoft", logo: "/images/companies/microsoft-logo.png" },
-                            { name: "Google", logo: "/images/companies/google-logo.png" },
-                            { name: "Amazon", logo: "/images/companies/amazon-logo.png" },
-                            { name: "IBM", logo: "/images/companies/ibm-logo.png" },
-                            { name: "Oracle", logo: "/images/companies/oracle-logo.png" },
-                            { name: "Cisco", logo: "/images/companies/cisco-logo.png" },
-                            { name: "Dell", logo: "/images/companies/dell-logo.png" },
-                            { name: "HP", logo: "/images/companies/hp-logo.png" },
-                            { name: "Intel", logo: "/images/companies/intel-logo.png" },
-                            { name: "VMware", logo: "/images/companies/vmware-logo.png" },
-                            { name: "Salesforce", logo: "/images/companies/salesforce-logo.png" },
-                            { name: "Adobe", logo: "/images/companies/adobe-logo.png" }
-                        ].map((company, index) => (
-                            <div
-                                key={`duplicate-${index}`}
-                                className="flex-shrink-0 w-32 h-16 flex items-center justify-center bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 mx-2"
-                            >
-                                <Image
-                                    src={company.logo}
-                                    alt={`${company.name} logo`}
-                                    width={120}
-                                    height={60}
-                                    className="object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-                                />
-                            </div>
-                        ))}
+
+                {/* Featured Client Logo */}
+                <div className="flex justify-center">
+                    <div className="w-24 h-12 sm:w-28 sm:h-14 lg:w-32 lg:h-16 flex items-center justify-center transition-all duration-300 hover:-translate-y-1">
+                        <Image
+                            src="/owasa.png"
+                            alt="OWASA - Orange Water and Sewer Authority"
+                            width={80}
+                            height={40}
+                            className="object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                        />
                     </div>
                 </div>
-
-                {/* Add CSS animation */}
-                <style jsx>{`
-                    @keyframes scroll-left {
-                        0% {
-                            transform: translateX(0);
-                        }
-                        100% {
-                            transform: translateX(-50%);
-                        }
-                    }
-                `}</style>
 
                 {/* Trust Indicators */}
                 <div className='flex flex-wrap justify-center gap-6 mt-12'>
                     <div className='flex items-center gap-2'>
                         <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
-                        <span className='text-sm text-darkpurple/70 font-medium'>500+ Enterprise Clients</span>
+                        <span className='text-sm text-darkpurple/70 font-medium'>Powering Modern Businesses</span>
                     </div>
                     <div className='flex items-center gap-2'>
                         <div className='w-2 h-2 bg-neoncyan rounded-full'></div>

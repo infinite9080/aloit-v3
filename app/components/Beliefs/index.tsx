@@ -24,9 +24,8 @@ const Beliefs = () => {
         }
 
         return () => {
-            const currentRef = sectionRef.current;
-            if (currentRef) {
-                observer.unobserve(currentRef);
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
             }
         };
     }, []);

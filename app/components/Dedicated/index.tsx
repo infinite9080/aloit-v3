@@ -45,27 +45,27 @@ const Dedicated = () => {
                     }`}
             />
 
-            <div className='mx-auto max-w-7xl px-4 my-40 sm:py-20 lg:px-8'>
-                <div className='grid grid-cols-1 md:grid-cols-2 my-16'>
+            <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center'>
 
-                    {/* COLUMN-1 */}
-                    <div>
-                        <video
-                            width={416}
-                            height={530}
-                            className="mx-auto md:mx-0 rounded-lg shadow-lg"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                        >
-                            <source src="/Blue Purple Modern Cyber Security Mobile Video.mp4" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+                    {/* COLUMN-1 - Video */}
+                    <div className="order-2 lg:order-1">
+                        <div className="relative w-full max-w-md mx-auto lg:max-w-lg">
+                            <video
+                                className="w-full h-auto rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500"
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                            >
+                                <source src="/Blue Purple Modern Cyber Security Mobile Video.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
 
                     {/* COLUMN-2 */}
-                    <div className="relative">
+                    <div className="order-1 lg:order-2 relative text-center lg:text-left">
                         <Image
                             src="images/dedicated/comma.svg"
                             alt="comma-image"
@@ -76,8 +76,8 @@ const Dedicated = () => {
                                 : 'opacity-0 transform -translate-y-10'
                                 }`}
                         />
-                        <h2 className="text-4xl lg:text-65xl pt-20 font-bold sm:leading-tight mt-5 text-center lg:text-start">Dedicated to protecting your digital assets.</h2>
-                        <p className="font-medium text-lightblack text-2xl mt-5 text-center lg:text-start">Our cybersecurity experts work around the clock to safeguard your business from evolving threats, ensuring compliance and peace of mind in today&apos;s digital landscape.</p>
+                        <h2 className="text-4xl lg:text-65xl pt-20 font-bold sm:leading-tight mt-5 text-center lg:text-start">Dedicated to Securing Your Digital Future</h2>
+                        <p className="font-medium text-lightblack text-2xl mt-5 text-center lg:text-start">Our experts provide 24/7 support, advanced IT solutions, and compliance guidance to protect your business, streamline operations, and ensure confidence in today’s digital world.</p>
 
                     </div>
 

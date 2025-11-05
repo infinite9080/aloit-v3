@@ -1,8 +1,7 @@
 "use client"
 import Slider from "react-slick";
-import React, { Component } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 
 // PRODUCT CAROUSEL DATA
 
@@ -52,7 +51,17 @@ function SampleNextArrow(props: { className: any; style: any; onClick: any; }) {
     return (
         <div
             className={className}
-            style={{ ...style, display: "flex", justifyContent: "center", alignItems: "center", background: "rgba(255, 255, 255, 0.3)", padding: "28px", borderRadius: "20px" }}
+            style={{
+                ...style,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                background: "rgba(255, 255, 255, 0.3)",
+                padding: "16px",
+                borderRadius: "12px",
+                width: "40px",
+                height: "40px"
+            }}
             onClick={onClick}
         />
     );
@@ -63,7 +72,17 @@ function SamplePrevArrow(props: { className: any; style: any; onClick: any; }) {
     return (
         <div
             className={className}
-            style={{ ...style, display: "flex", justifyContent: "center", alignItems: "center", background: "rgba(255, 255, 255, 0.3)", padding: "28px", borderRadius: "20px" }}
+            style={{
+                ...style,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                background: "rgba(255, 255, 255, 0.3)",
+                padding: "16px",
+                borderRadius: "12px",
+                width: "40px",
+                height: "40px"
+            }}
             onClick={onClick}
         />
     );
@@ -109,65 +128,102 @@ const FeaturedProducts = () => {
         speed: 500,
         nextArrow: <SampleNextArrow className={undefined} style={undefined} onClick={undefined} />,
         prevArrow: <SamplePrevArrow className={undefined} style={undefined} onClick={undefined} />,
-        cssEase: "linear",
+        cssEase: "ease-in-out",
         responsive: [
             {
-                breakpoint: 800,
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: false,
+                    arrows: true
+                }
+            },
+            {
+                breakpoint: 900,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     infinite: true,
-                    dots: false
+                    dots: false,
+                    arrows: true
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: false,
+                    arrows: false
                 }
             }
         ]
     };
 
     return (
-        <div id="products-section" className="bg-bgblue marginFeature bg-featured" ref={sectionRef}>
-            <div className='mx-auto max-w-7xl sm:py-4 lg:px-8'>
+        <div id="products-section" className="bg-bgblue bg-featured overflow-hidden" ref={sectionRef}>
+            <div className='w-full min-h-screen px-3 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 xl:py-32'>
+                <div className='max-w-7xl mx-auto'>
+                    {/* Section Title */}
+                    <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ease-out ${isVisible
+                        ? 'opacity-100 transform translate-y-0'
+                        : 'opacity-0 transform translate-y-10'
+                        }`}>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white my-1 sm:my-2">Featured Products.</h3>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-opacity-50 lg:mr-12 my-1 sm:my-2">Discover.</h3>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white text-opacity-25 lg:mr-6 my-1 sm:my-2">Transform.</h3>
+                    </div>
 
-                <div className={`text-center mt-60 pt-48 pb-10 md:pt-96 transition-all duration-1000 ease-out ${isVisible
-                    ? 'opacity-100 transform translate-y-0'
-                    : 'opacity-0 transform translate-y-10'
-                    }`}>
-                    <h3 className="text-4xl sm:text-6xl font-bold text-white my-2">Featured Products.</h3>
-                    <h3 className="text-4xl sm:text-6xl font-bold text-white text-opacity-50 lg:mr-48 my-2">Featured Products.</h3>
-                    <h3 className="text-4xl sm:text-6xl font-bold text-white text-opacity-25 lg:-mr-32 my-2">Featured Products.</h3>
-                </div>
+                    {/* Products Carousel */}
+                    <div className={`featured-carousel transition-all duration-1200 ease-out delay-300 ${isVisible
+                        ? 'opacity-100 transform translate-y-0'
+                        : 'opacity-0 transform translate-y-10'
+                        }`}>
+                        <Slider {...settings}>
+                            {postData.map((items, i) => (
+                                <div key={i} className="px-2 sm:px-3 lg:px-4">
+                                    <div className='featured-product-card bg-transparent pb-6 sm:pb-8 lg:pb-12 my-4 sm:my-6 lg:my-10 rounded-2xl sm:rounded-3xl'>
+                                        {/* Product Image */}
+                                        <div className={`relative mb-6 sm:mb-8 lg:mb-10 transition-all duration-1000 ease-out ${isVisible
+                                            ? 'opacity-100 transform scale-100'
+                                            : 'opacity-0 transform scale-95'
+                                            }`} style={{ transitionDelay: `${i * 200 + 500}ms` }}>
+                                            <div className="featured-image-container relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group">
+                                                <Image
+                                                    src={items.imgSrc}
+                                                    alt={items.heading}
+                                                    width={636}
+                                                    height={620}
+                                                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    priority={i < 2}
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                            </div>
+                                        </div>
 
-                <div className={`transition-all duration-1200 ease-out delay-300 ${isVisible
-                    ? 'opacity-100 transform translate-y-0'
-                    : 'opacity-0 transform translate-y-10'
-                    }`}>
-                    <Slider {...settings}>
-                        {postData.map((items, i) => (
-                            <div key={i}>
-                                <div className='bg-transparent m-3 pb-12 my-10 rounded-3xl'>
-                                    <div className={`transition-all duration-1000 ease-out ${isVisible
-                                        ? 'opacity-100 transform scale-100'
-                                        : 'opacity-0 transform scale-95'
-                                        }`} style={{ transitionDelay: `${i * 200 + 500}ms` }}>
-                                        <Image src={items.imgSrc} alt={items.heading} width={636} height={620} className="rounded-2xl shadow-2xl hover:shadow-3xl transition-shadow duration-300" />
-                                    </div>
-                                    <div className="w-345">
-                                        <h4 className={`sm:text-4xl font-bold sm:pt-6 text-center sm:text-start mt-10 text-white transition-all duration-1000 ease-out ${isVisible
-                                            ? 'opacity-100 transform translate-x-0'
-                                            : 'opacity-0 transform -translate-x-5'
-                                            }`} style={{ transitionDelay: `${i * 200 + 700}ms` }}>
-                                            {items.heading}
-                                        </h4>
-                                        <p className={`text-lg font-normal text-white/80 text-center sm:text-start mt-4 leading-relaxed transition-all duration-1000 ease-out ${isVisible
-                                            ? 'opacity-100 transform translate-x-0'
-                                            : 'opacity-0 transform -translate-x-5'
-                                            }`} style={{ transitionDelay: `${i * 200 + 900}ms` }}>
-                                            {items.description}
-                                        </p>
+                                        {/* Product Content */}
+                                        <div className="max-w-full px-2 sm:px-4">
+                                            <h4 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-center lg:text-start mt-4 sm:mt-6 lg:mt-10 text-white transition-all duration-1000 ease-out leading-tight ${isVisible
+                                                ? 'opacity-100 transform translate-x-0'
+                                                : 'opacity-0 transform -translate-x-5'
+                                                }`} style={{ transitionDelay: `${i * 200 + 700}ms` }}>
+                                                {items.heading}
+                                            </h4>
+                                            <p className={`text-sm sm:text-base lg:text-lg font-normal text-white/80 text-center lg:text-start mt-3 sm:mt-4 leading-relaxed transition-all duration-1000 ease-out ${isVisible
+                                                ? 'opacity-100 transform translate-x-0'
+                                                : 'opacity-0 transform -translate-x-5'
+                                                }`} style={{ transitionDelay: `${i * 200 + 900}ms` }}>
+                                                {items.description}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </Slider>
+                            ))}
+                        </Slider>
+                    </div>
                 </div>
             </div>
         </div>
