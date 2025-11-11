@@ -13,11 +13,10 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-    { name: 'About', href: '#aboutus-section', current: false },
-    { name: 'Services', href: '#services-section', current: false },
-    { name: 'Products', href: '#products-section', current: false },
-    { name: 'FAQ', href: '#faq-section', current: false },
-    { name: 'Contact', href: '#contact-section', current: false },
+    { name: 'About', href: '/our-team', current: false },
+    { name: 'Services', href: '/our-services', current: false },
+    { name: 'Products', href: '/products', current: false },
+    { name: 'FAQ', href: '/faq', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -41,7 +40,7 @@ const Navbar = () => {
     return (
         <Disclosure as="nav" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled
             ? 'bg-transparent mt-3'
-            : 'bg-white/90 backdrop-blur-md border-b border-neoncyan/20 shadow-lg'
+            : 'bg-transparent mt-3'
             }`}>
             <>
                 <div className={`transition-all duration-500 ease-in-out ${isScrolled
@@ -49,20 +48,20 @@ const Navbar = () => {
                     : 'mx-auto max-w-7xl px-4 lg:px-8 transform scale-100'
                     }`}>
                     <div className={`transition-all duration-500 ease-in-out ${isScrolled
-                        ? 'bg-white/95 backdrop-blur-lg shadow-2xl rounded-full border border-neoncyan/20 transform scale-100'
-                        : 'transform scale-100'
+                        ? 'bg-white/70 backdrop-blur-xl shadow-2xl rounded-full border border-white/30'
+                        : 'bg-white/60 backdrop-blur-xl shadow-xl rounded-full border border-white/30'
                         }`}>
-                        <div className={`relative flex items-center justify-between transition-all duration-500 ease-in-out ${isScrolled ? 'h-12 py-2' : 'h-20 py-4'
+                        <div className={`relative flex items-center justify-between transition-all duration-500 ease-in-out ${isScrolled ? 'h-12 py-2' : 'h-16 py-3'
                             }`}>
 
                             {/* LOGO */}
                             <div className="flex flex-shrink-0 items-center">
-                                <Link href="#" className='group'>
+                                <Link href="/" className='group'>
                                     <Image
                                         src="/logo.png"
                                         alt="Logo"
-                                        width={80}
-                                        height={60}
+                                        width={60}
+                                        height={50}
                                         className="ml-5 transition-opacity duration-300 group-hover:opacity-80"
                                     />
                                 </Link>
@@ -99,7 +98,7 @@ const Navbar = () => {
 
                                 {/* MOBILE DROPDOWN MENU */}
                                 {isOpen && (
-                                    <div className="absolute top-12 right-0 w-64 bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-neoncyan/20 z-50">
+                                    <div className="absolute top-12 right-0 w-64 bg-white/70 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/30 z-50">
                                         <div className="py-4">
                                             {navigation.map((item) => (
                                                 <a
@@ -112,7 +111,7 @@ const Navbar = () => {
                                                 </a>
                                             ))}
                                             <div className="border-t border-neoncyan/10 mt-2 pt-2 px-6">
-                                                <button 
+                                                <button
                                                     onClick={() => setIsOpen(false)}
                                                     className="w-full bg-neoncyan text-white font-semibold py-2 px-4 rounded-xl hover:bg-darkpurple transition-colors duration-300"
                                                 >

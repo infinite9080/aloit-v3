@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { AnimatedTabs } from '../AnimatedTabs';
+import { AnimatedTabs } from '../components/AnimatedTabs';
 
 const products = [
     {
@@ -96,7 +96,7 @@ const products = [
     }
 ];
 
-const ProductDeepDive = () => {
+const ProductsPage = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -126,23 +126,23 @@ const ProductDeepDive = () => {
     }, []);
 
     return (
-        <div id="products-section" className="py-12 sm:py-16 lg:py-20 xl:py-32 bg-gray-50 overflow-hidden relative" ref={sectionRef}>
+        <div className="pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 xl:pb-32 bg-gray-50 overflow-hidden relative" ref={sectionRef}>
             {/* Subtle background pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-20 left-10 w-32 h-32 border border-neoncyan/20 rounded-full animate-pulse"></div>
                 <div className="absolute bottom-20 right-10 w-24 h-24 border border-neoncyan/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                 <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-neoncyan/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
-            <div className='mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 relative z-10'>
 
-                {/* Section Title - Matching Other Sections */}
+            <div className='mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 relative z-10'>
+                {/* Section Title */}
                 <div className={`text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-1000 ease-out ${isVisible
                     ? 'opacity-100 transform translate-y-0'
                     : 'opacity-0 transform translate-y-10'
                     }`}>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black my-1 sm:my-2">Product Deep Dive.</h3>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black opacity-50 lg:mr-12 my-1 sm:my-2">Insights.</h3>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black opacity-25 lg:mr-6 my-1 sm:my-2">Benefits.</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple my-1 sm:my-2">Product Deep Dive.</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-50 my-1 sm:my-2 lg:ml-16">Insights.</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-25 my-1 sm:my-2 lg:ml-32">Benefits.</h3>
                 </div>
 
                 {/* Benefits Section */}
@@ -177,7 +177,7 @@ const ProductDeepDive = () => {
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full h-full">
                                     {/* Product Logo and Info */}
                                     <div className="flex flex-col items-center justify-center">
-                                        <div className='flex items-center justify-center w-32 h-32 mb-6 bg-white/10 rounded-2xl'>
+                                        <div className='flex items-center justify-center w-32 h-32 mb-6 bg-gray-100 rounded-2xl'>
                                             <Image
                                                 src={product.logo}
                                                 alt={product.name}
@@ -186,10 +186,10 @@ const ProductDeepDive = () => {
                                                 className="object-contain max-w-full max-h-full"
                                             />
                                         </div>
-                                        <h2 className="text-3xl font-bold mb-2 text-white mt-0 !m-0">
+                                        <h2 className="text-3xl font-bold mb-2 text-darkpurple mt-0 !m-0">
                                             {product.name}
                                         </h2>
-                                        <h3 className="text-lg font-medium text-gray-300 mb-4">
+                                        <h3 className="text-lg font-medium text-gray-600 mb-4">
                                             {product.fullName}
                                         </h3>
                                         <button
@@ -203,20 +203,20 @@ const ProductDeepDive = () => {
                                     {/* Description and Features */}
                                     <div className="flex flex-col gap-y-4">
                                         <div>
-                                            <h4 className="text-xl font-bold text-white mb-3">About</h4>
-                                            <p className="text-sm text-gray-200 leading-relaxed">
+                                            <h4 className="text-xl font-bold text-darkpurple mb-3">About</h4>
+                                            <p className="text-sm text-gray-700 leading-relaxed">
                                                 {product.description}
                                             </p>
                                         </div>
                                         <div>
-                                            <h4 className="text-xl font-bold text-white mb-3">Key Features</h4>
+                                            <h4 className="text-xl font-bold text-darkpurple mb-3">Key Features</h4>
                                             <div className="space-y-2">
                                                 {product.features.map((feature, index) => (
                                                     <div key={index} className='flex items-start gap-3'>
                                                         <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                                                             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                                         </svg>
-                                                        <span className='text-sm text-gray-200 leading-tight'>{feature}</span>
+                                                        <span className='text-sm text-gray-700 leading-tight'>{feature}</span>
                                                     </div>
                                                 ))}
                                             </div>
@@ -227,10 +227,9 @@ const ProductDeepDive = () => {
                         }))}
                     />
                 </div>
-
             </div>
         </div>
     );
-}
+};
 
-export default ProductDeepDive;
+export default ProductsPage;

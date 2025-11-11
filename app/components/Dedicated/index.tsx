@@ -65,7 +65,7 @@ const Dedicated = () => {
                     </div>
 
                     {/* COLUMN-2 */}
-                    <div className="order-1 lg:order-2 relative text-center lg:text-left">
+                    <div className="ml-5 order-1 lg:order-2 relative text-center lg:text-left">
                         <Image
                             src="images/dedicated/comma.svg"
                             alt="comma-image"

@@ -186,54 +186,54 @@ const MultipleItems = () => {
                     }`}>
                     <Slider {...settings}>
                         {postData.map((items, i) => (
-                            <div key={i} className="relative px-2 sm:px-3 lg:px-4">
-                                <div className='bg-white/95 backdrop-blur-md shadow-lg hover:shadow-xl mx-1 sm:mx-2 lg:mx-3 p-5 sm:p-6 lg:p-8 xl:p-10 my-4 sm:my-6 lg:my-8 xl:my-12 rounded-2xl sm:rounded-3xl border border-neoncyan/10 hover:border-neoncyan/30 transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden min-h-[400px] sm:min-h-[420px] lg:min-h-[450px] flex flex-col justify-between'>
+                            <div key={i} className="relative px-3 sm:px-4">
+                                <div className='bg-white/95 backdrop-blur-md shadow-lg hover:shadow-xl mx-2 sm:mx-3 p-6 sm:p-8 my-6 sm:my-8 rounded-3xl border border-neoncyan/10 hover:border-neoncyan/30 transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden h-[480px] sm:h-[500px] flex flex-col justify-between'>
                                     {/* Background gradient effect */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-neoncyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                                     {/* Profile Image */}
                                     <div className="relative z-10 flex-shrink-0">
-                                        <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 xl:w-24 xl:h-24 mx-auto mb-4 sm:mb-5 lg:mb-6 relative">
+                                        <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-5 relative">
                                             <Image
                                                 src={items.imgSrc}
                                                 alt={items.name}
                                                 width={96}
                                                 height={96}
-                                                className="rounded-full shadow-lg border-2 sm:border-3 lg:border-4 border-white group-hover:border-neoncyan/20 transition-all duration-300 w-full h-full object-cover"
+                                                className="rounded-full shadow-lg border-4 border-white group-hover:border-neoncyan/20 transition-all duration-300 w-full h-full object-cover"
                                             />
                                             <div className="absolute inset-0 rounded-full bg-neoncyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                         </div>
 
                                         {/* Quote Icon */}
-                                        <div className="text-center mb-3 sm:mb-4 lg:mb-5">
-                                            <svg className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 text-neoncyan/60 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                                        <div className="text-center mb-4">
+                                            <svg className="w-8 h-8 sm:w-10 sm:h-10 text-neoncyan/60 mx-auto" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
                                             </svg>
                                         </div>
 
                                         {/* Comment */}
-                                        <div className="flex-grow flex items-center">
-                                            <p className='text-sm sm:text-base lg:text-lg xl:text-xl font-medium text-darkpurple leading-relaxed mb-4 sm:mb-5 lg:mb-6 text-center italic px-1 sm:px-2'>
+                                        <div className="flex-grow flex items-center mb-6">
+                                            <p className='text-base sm:text-lg font-medium text-darkpurple leading-relaxed text-center italic'>
                                                 &ldquo;{items.comment}&rdquo;
                                             </p>
                                         </div>
 
                                         {/* Divider */}
-                                        <div className="w-12 h-0.5 sm:w-16 lg:w-20 bg-gradient-to-r from-neoncyan to-darkpurple mx-auto mb-4 sm:mb-5 lg:mb-6 rounded-full"></div>
+                                        <div className="w-20 h-0.5 bg-gradient-to-r from-neoncyan to-darkpurple mx-auto mb-5 rounded-full"></div>
 
                                         {/* User Info and Rating */}
-                                        <div className="flex flex-col items-center space-y-2 sm:space-y-3 lg:space-y-4 flex-shrink-0">
+                                        <div className="flex flex-col items-center space-y-3 flex-shrink-0">
                                             <div className="text-center">
-                                                <h3 className='text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-darkpurple'>{items.name}</h3>
-                                                <p className='text-xs sm:text-sm lg:text-base font-medium text-darkpurple/70 mt-1'>{items.profession}</p>
+                                                <h3 className='text-lg sm:text-xl font-bold text-darkpurple'>{items.name}</h3>
+                                                <p className='text-sm sm:text-base font-medium text-darkpurple/70 mt-1'>{items.profession}</p>
                                             </div>
 
                                             {/* Star Rating */}
-                                            <div className="flex space-x-1 sm:space-x-1.5">
+                                            <div className="flex space-x-1">
                                                 {[...Array(5)].map((_, index) => (
                                                     <StarIcon
                                                         key={index}
-                                                        className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-neoncyan drop-shadow-sm"
+                                                        className="w-5 h-5 text-neoncyan drop-shadow-sm"
                                                     />
                                                 ))}
                                             </div>

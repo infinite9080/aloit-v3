@@ -1,10 +1,45 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+import Link from 'next/link';
 
 const ServicesSection = () => {
     const [activeCategory, setActiveCategory] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
+
+    const [inputValues, setInputValues] = useState({
+        input1: '',
+        input2: '',
+        input3: ''
+    });
+
+    const handleChange = (e: { target: { name: string; value: string; }; }) => {
+        const { name, value } = e.target;
+        setInputValues(prevState => ({ ...prevState, [name]: value }));
+    };
+
+    const handleClick = () => {
+        alert(`Name: ${inputValues.input1}, Email-address: ${inputValues.input2}, Message: ${inputValues.input3}`);
+        setIsContactModalOpen(false);
+    };
+
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        event.preventDefault();
+    };
+
+    const isDisabled = Object.values(inputValues).some((value) => value === '');
+
+    const closeModal = () => {
+        setIsContactModalOpen(false);
+    };
+
+    const openModal = () => {
+        setIsContactModalOpen(true);
+    };
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -48,7 +83,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Website Security",
-                    description: "Protect your online presence from cyber threats.",
+                    image: "/web security.png",
+                    description: "Protect your online presence from cyber threats with comprehensive web application security testing, vulnerability assessments, and continuous monitoring. Our expert team identifies and mitigates risks including SQL injection, XSS attacks, and CSRF vulnerabilities to keep your website secure.",
                 },
                 {
                     icon: (
@@ -58,7 +94,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "API Security",
-                    description: "Secure your digital interfaces and data exchanges.",
+                    image: "/api security.png",
+                    description: "Secure your digital interfaces and data exchanges with advanced API security testing and protection strategies. Our comprehensive API security assessments cover authentication mechanisms, authorization controls, input validation, rate limiting, and data encryption to protect against injection attacks, broken authentication, and sensitive data exposure across REST, GraphQL, and SOAP APIs.",
                 },
                 {
                     icon: (
@@ -67,7 +104,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Mobile App Security",
-                    description: "Ensure the safety and reliability of your mobile applications.",
+                    image: "/mobile app security.png",
+                    description: "Ensure the safety and reliability of your mobile applications across iOS and Android platforms with thorough security audits. We conduct comprehensive testing for insecure data storage, weak cryptography, improper platform usage, insecure communication, and reverse engineering vulnerabilities. Our mobile security experts analyze both native and hybrid applications to identify security flaws in authentication, session management, and data protection mechanisms.",
                 },
                 {
                     icon: (
@@ -76,7 +114,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Network Security",
-                    description: "Proactively defend your critical IT infrastructure.",
+                    image: "/network security.png",
+                    description: "Proactively defend your critical IT infrastructure with comprehensive network security assessments, penetration testing, and real-time threat monitoring. We identify vulnerabilities in your network architecture and implement robust security measures to protect against unauthorized access and data breaches.",
                 },
                 {
                     icon: (
@@ -85,7 +124,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Active Directory Security",
-                    description: "Fortify your organization's user management systems.",
+                    image: "/active directory security.png",
+                    description: "Fortify your organization's user management systems with advanced Active Directory security assessments and hardening. Our experts identify misconfigurations, weak permissions, privilege escalation paths, and potential attack vectors including Kerberoasting, Pass-the-Hash, and Golden Ticket attacks. We provide comprehensive recommendations for Group Policy hardening, privileged access management, and implementing least privilege principles across your domain infrastructure.",
                 },
             ],
         },
@@ -107,7 +147,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Attack Simulation",
-                    description: "Real-world scenarios to identify vulnerabilities.",
+                    image: "/Attack Simulation.png",
+                    description: "Conduct realistic attack simulations using real-world scenarios to identify vulnerabilities in your systems before malicious actors can exploit them. Our comprehensive testing methodology covers multiple attack vectors and provides detailed remediation guidance.",
                 },
                 {
                     icon: (
@@ -117,7 +158,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Advanced Persistent Threat Simulation",
-                    description: "Simulate sophisticated cyber threats.",
+                    image: "/Advanced Persistent Threat Simulation.png",
+                    description: "Simulate sophisticated, long-term cyber threats that mimic advanced adversaries and nation-state actors. Test your organization's ability to detect and respond to complex, multi-stage attacks including initial compromise, lateral movement, privilege escalation, data exfiltration, and persistence mechanisms. Our APT simulations help validate your security operations center's detection capabilities, incident response procedures, and threat hunting effectiveness against the most sophisticated attack scenarios.",
                 },
                 {
                     icon: (
@@ -127,7 +169,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Insider Threat Detection",
-                    description: "Safeguard your business from internal security risks.",
+                    image: "/Insider Threat Detection.png",
+                    description: "Safeguard your business from internal security risks with comprehensive insider threat detection and monitoring solutions. We implement behavioral analytics, user activity monitoring, and anomaly detection systems to identify suspicious patterns indicating potential data theft, sabotage, or policy violations. Our insider threat program includes risk assessment, monitoring strategy development, and incident response planning to protect against both malicious insiders and unintentional security breaches by employees, contractors, and partners.",
                 },
                 {
                     icon: (
@@ -136,7 +179,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Security Controls Testing",
-                    description: "Assess your EDR and defense stack against advanced threats.",
+                    image: "/Security Controls Testing.png",
+                    description: "Thoroughly assess your EDR, SIEM, and defense stack against advanced threats to ensure your security controls are functioning effectively and providing adequate protection. We validate detection rules, test alert accuracy, evaluate response capabilities, and identify gaps in your security monitoring coverage. Our comprehensive testing includes firewall rule validation, IDS/IPS effectiveness, antivirus bypass techniques, and security tool configuration reviews to ensure your investments in security technology are delivering maximum value and protection.",
                 },
             ],
         },
@@ -156,7 +200,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Intelligent Risk Profiling",
-                    description: "Accurate, AI-driven risk assessment.",
+                    image: "/Intelligent Risk Profiling.png",
+                    description: "Leverage advanced AI algorithms and machine learning models to conduct accurate, comprehensive risk assessments that identify potential vulnerabilities and prioritize security investments based on your organization's unique threat landscape, business requirements, and risk tolerance. Our intelligent risk profiling combines automated vulnerability scanning, threat intelligence feeds, business impact analysis, and predictive analytics to provide actionable insights and data-driven recommendations for optimizing your security posture and resource allocation.",
                 },
                 {
                     icon: (
@@ -166,7 +211,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "AI Policy Advisor",
-                    description: "Smart guidance on cybersecurity policy creation.",
+                    image: "/AI Policy Advisor.png",
+                    description: "Receive intelligent, data-driven guidance on cybersecurity policy creation and optimization tailored to your industry standards and regulatory requirements. Our AI-powered policy advisor analyzes your current security policies, identifies gaps and inconsistencies, and provides recommendations aligned with frameworks like NIST, ISO 27001, CIS Controls, and industry-specific regulations including GDPR, HIPAA, PCI DSS, and SOC 2. The system continuously monitors policy effectiveness and suggests updates based on emerging threats and evolving compliance requirements.",
                 },
                 {
                     icon: (
@@ -175,7 +221,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Automated Security Reports",
-                    description: "Timely, clear, actionable security insights.",
+                    image: "/Automated Security Reports.png",
+                    description: "Generate timely, clear, and actionable security insights through automated reporting systems that provide comprehensive analysis and recommendations. Our intelligent reporting platform aggregates data from multiple security tools, correlates events, identifies trends, and produces executive summaries, technical deep-dives, and compliance reports customized for different stakeholders. Automated dashboards provide real-time visibility into your security posture, vulnerability metrics, incident trends, and remediation progress with scheduled delivery and customizable alert thresholds.",
                 },
             ],
         },
@@ -195,7 +242,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Interactive Awareness Training",
-                    description: "Engaging sessions tailored to your team.",
+                    image: "/Interactive Awareness Training.png",
+                    description: "Deliver engaging, hands-on cybersecurity awareness sessions specifically tailored to your team's roles and responsibilities, featuring real-world scenarios and interactive learning modules to maximize retention and practical application. Our training programs cover password security, phishing recognition, social engineering tactics, secure remote work practices, data handling procedures, and incident reporting. We utilize gamification, simulated attacks, and role-based content to ensure employees at all levels understand their security responsibilities and can identify and respond to threats effectively.",
                 },
                 {
                     icon: (
@@ -204,7 +252,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Monthly Security Insights",
-                    description: "Stay informed with the latest cybersecurity trends.",
+                    image: "/Monthly Security Insights.png",
+                    description: "Stay informed with comprehensive monthly briefings on the latest cybersecurity trends, emerging threats, and industry best practices. Our curated security insights include analysis of recent data breaches, new attack techniques, vulnerability disclosures, regulatory changes, and threat actor activities relevant to your industry. Each monthly report provides actionable recommendations, security tips, and strategic guidance to help your organization stay ahead of evolving cyber threats and maintain a proactive security posture in an ever-changing threat landscape.",
                 },
                 {
                     icon: (
@@ -214,7 +263,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Phishing Awareness Campaigns",
-                    description: "Hands-on training to prevent social engineering attacks.",
+                    image: "/Phishing Awareness Campaigns.png",
+                    description: "Implement comprehensive phishing awareness campaigns with simulated attacks and hands-on training to prevent social engineering attacks and strengthen your human firewall. Our campaigns include realistic phishing simulations, spear-phishing scenarios, business email compromise (BEC) exercises, and vishing attempts to test employee awareness and response. We provide detailed metrics on click rates, reporting rates, and credential submission, along with targeted remedial training for at-risk users and recognition programs for security champions.",
                 },
             ],
         },
@@ -234,7 +284,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "Access Control Reviews",
-                    description: "Ensure your physical locations are secure.",
+                    image: "/Access Control Reviews.png",
+                    description: "Conduct comprehensive evaluations of your physical security infrastructure to ensure your facilities, data centers, and office locations maintain appropriate access controls and security measures to protect against unauthorized entry and internal threats. Our physical security assessments examine badge systems, biometric readers, visitor management procedures, security camera coverage, alarm systems, and physical barriers. We identify vulnerabilities in perimeter security, tailgating risks, and gaps in access logging and monitoring to provide recommendations for strengthening your physical security posture.",
                 },
                 {
                     icon: (
@@ -244,7 +295,8 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "RFID Security Checks",
-                    description: "Verify the integrity of your access systems.",
+                    image: "/RFID Security Checks.png",
+                    description: "Perform thorough security assessments of your RFID and card-based access systems to verify integrity, identify vulnerabilities, and ensure proper authentication protocols. Our RFID security testing includes cloning attempts, relay attacks, eavesdropping detection, and encryption analysis to protect against unauthorized access and credential theft. We evaluate reader security, card technology, and backend system integration to ensure your physical access control systems meet security best practices and cannot be easily bypassed or compromised by attackers.",
                 },
             ],
         },
@@ -265,14 +317,15 @@ const ServicesSection = () => {
                         </svg>
                     ),
                     title: "STRIDE Interactive Workshops",
-                    description: "Identify, discuss, and mitigate potential threats collaboratively.",
+                    image: "/STRIDE Interactive Workshops.png",
+                    description: "Participate in comprehensive STRIDE methodology workshops where our security experts collaborate with your team to systematically identify, analyze, discuss, and develop mitigation strategies for potential security threats across your entire technology stack and business processes. STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) provides a structured framework for threat modeling that helps teams proactively identify security risks during design and development phases, reducing costly remediation efforts later in the lifecycle.",
                 },
             ],
         },
     ];
 
     return (
-        <section id="services-section" className="py-12 sm:py-16 lg:py-20 xl:py-32 bg-white relative overflow-hidden" ref={sectionRef}>
+        <section id="services-section" className="pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 xl:pb-32 bg-white relative overflow-hidden" ref={sectionRef}>
             {/* Subtle Background Elements */}
             <div className={`absolute inset-0 opacity-5 transition-all duration-1000 ease-out bg-elements ${isVisible
                 ? 'opacity-5 transform translate-y-0'
@@ -290,8 +343,8 @@ const ServicesSection = () => {
                     : 'opacity-0 transform translate-y-10'
                     }`}>
                     <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple my-1 sm:my-2">Our Services.</h3>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-50 lg:mr-12 my-1 sm:my-2">Reliable.</h3>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-25 lg:mr-6 my-1 sm:my-2">Efficient.</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-50 my-1 sm:my-2 lg:ml-20">Reliable.</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-25 my-1 sm:my-2 lg:ml-40">Efficient.</h3>
                 </div>
 
                 {/* Category Navigation */}
@@ -326,46 +379,85 @@ const ServicesSection = () => {
                     ? 'opacity-100 transform translate-y-0'
                     : 'opacity-0 transform translate-y-10'
                     }`}>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-                        {serviceCategories[activeCategory].services.map((service, index) => (
-                            <div
-                                key={index}
-                                className={`relative bg-white py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 text-center shadow-lg rounded-2xl sm:rounded-3xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group border border-gray-100 hover:border-neoncyan/30 overflow-hidden ${isVisible
-                                    ? 'opacity-100 transform scale-100'
-                                    : 'opacity-0 transform scale-95'
-                                    }`}
-                                style={{ transitionDelay: `${index * 150 + 600}ms` }}
-                            >
-                                {/* Hover Background Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-neoncyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr">
+                        {serviceCategories[activeCategory].services.map((service, index) => {
+                            // Create dynamic masonry-style layout
+                            const patterns = [
+                                'lg:col-span-2 lg:row-span-2', // Large
+                                'lg:col-span-2', // Wide
+                                'lg:col-span-2', // Wide
+                                'lg:col-span-2 lg:row-span-2', // Large
+                                'lg:col-span-2', // Wide
+                            ];
+                            const pattern = patterns[index % patterns.length];
 
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    {/* Icon Container */}
-                                    <div className='relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-br from-neoncyan/10 to-neoncyan/5 rounded-full group-hover:from-neoncyan/20 group-hover:to-neoncyan/10 transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-neoncyan/20'>
-                                        <div className="text-neoncyan transition-all duration-300 group-hover:text-neoncyan">
-                                            <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8">
-                                                {service.icon}
-                                            </div>
-                                        </div>
-                                        {/* Icon glow effect */}
-                                        <div className="absolute inset-0 bg-neoncyan/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
+                            return (
+                                <div
+                                    key={index}
+                                    className={`group bg-white rounded-3xl overflow-hidden transition-all duration-75 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] hover:-translate-y-2 ${pattern} ${isVisible
+                                        ? 'opacity-100 transform scale-100'
+                                        : 'opacity-0 transform scale-95'
+                                        }`}
+                                    style={{ transitionDelay: `${index * 100 + 600}ms` }}
+                                >
+                                    {/* Image Section */}
+                                    <div className="relative h-40 overflow-hidden">
+                                        {/* Placeholder gradient background */}
+                                        <div className="absolute inset-0 bg-gradient-to-br from-neoncyan/20 via-blue-500/20 to-purple-500/20"></div>
+
+                                        {/* Image - Replace with actual service images */}
+                                        <Image
+                                            src={service.image}
+                                            alt={service.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-100"
+                                        />
+
+                                        {/* Overlay gradient */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-75"></div>
+
+                                        {/* Badge */}
+                                        <div className="absolute top-4 right-4 w-3 h-3 bg-neoncyan rounded-full animate-pulse shadow-lg shadow-neoncyan/50"></div>
                                     </div>
 
-                                    {/* Title */}
-                                    <h4 className='text-lg sm:text-xl lg:text-2xl font-bold text-darkpurple mb-3 sm:mb-4 group-hover:text-neoncyan transition-colors duration-300 leading-tight'>
-                                        {service.title}
-                                    </h4>
+                                    {/* Content */}
+                                    <div className={`p-5 bg-gradient-to-b from-white to-gray-50/50 flex flex-col ${pattern.includes('row-span-2') ? 'min-h-[240px]' : ''}`}>
+                                        <h3 className={`font-bold text-darkpurple mb-3 group-hover:text-neoncyan transition-colors duration-75 ${pattern.includes('row-span-2') ? 'text-2xl' : 'text-xl'}`}>
+                                            {service.title}
+                                        </h3>
+                                        <p className={`text-darkpurple/70 leading-relaxed ${pattern.includes('row-span-2') ? 'text-base mb-4' : 'text-sm line-clamp-3'}`}>
+                                            {service.description}
+                                        </p>
 
-                                    {/* Description */}
-                                    <p className='text-sm sm:text-base font-normal text-darkpurple/70 leading-relaxed group-hover:text-darkpurple/90 transition-colors duration-300 mb-4 sm:mb-6'>
-                                        {service.description}
-                                    </p>
-
-
+                                        {/* Additional content for large cards */}
+                                        {pattern.includes('row-span-2') && (
+                                            <div className="mt-auto pt-4 border-t border-gray-200">
+                                                <div className="space-y-3">
+                                                    <div className="flex items-start gap-2">
+                                                        <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                        </svg>
+                                                        <span className="text-sm text-darkpurple/70">Comprehensive vulnerability assessment and remediation guidance</span>
+                                                    </div>
+                                                    <div className="flex items-start gap-2">
+                                                        <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                        </svg>
+                                                        <span className="text-sm text-darkpurple/70">Detailed reporting with actionable recommendations</span>
+                                                    </div>
+                                                    <div className="flex items-start gap-2">
+                                                        <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                        </svg>
+                                                        <span className="text-sm text-darkpurple/70">Industry-standard methodologies and best practices</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 
@@ -388,7 +480,7 @@ const ServicesSection = () => {
                             <p className="text-white/90 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
                                 Let our cybersecurity experts assess your current security posture and design a comprehensive protection strategy tailored to your business needs.
                             </p>
-                            <button className="group bg-white text-neoncyan px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:bg-white/90 hover:text-darkpurple transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl inline-flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
+                            <button onClick={openModal} className="group bg-white text-neoncyan px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:bg-white/90 hover:text-darkpurple transition-all duration-150 hover:scale-105 shadow-xl hover:shadow-2xl inline-flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center">
                                 <span>Get Your Security Assessment</span>
                                 <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -398,8 +490,99 @@ const ServicesSection = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Contact Modal */}
+            <Transition appear show={isContactModalOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-50" onClose={closeModal}>
+                    <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0"
+                        enterTo="opacity-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                    >
+                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    </Transition.Child>
+
+                    <div className="fixed inset-0 overflow-y-auto">
+                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                            <Transition.Child
+                                as={Fragment}
+                                enter="ease-out duration-300"
+                                enterFrom="opacity-0 scale-95"
+                                enterTo="opacity-100 scale-100"
+                                leave="ease-in duration-200"
+                                leaveFrom="opacity-100 scale-100"
+                                leaveTo="opacity-0 scale-95"
+                            >
+                                <Dialog.Panel className="w-full max-w-sm sm:max-w-md lg:max-w-lg transform overflow-hidden rounded-2xl bg-white p-4 sm:p-6 text-left align-middle shadow-xl transition-all mx-4">
+                                    <div className="py-6 sm:py-8 px-2 sm:px-4 mx-auto max-w-screen-md">
+                                        <div className="flex flex-shrink-0 items-center justify-center">
+                                            <Link href="/" className='text-xl sm:text-2xl lg:text-3xl font-semibold text-black'>
+                                                Aloit Consultants
+                                            </Link>
+                                        </div>
+                                        <p className="mb-6 sm:mb-8 lg:mb-12 mt-6 sm:mt-8 font-light text-center text-gray-500 text-sm sm:text-base lg:text-lg">Contact us now? Want to send us feedback?</p>
+                                        <form action="#" className="space-y-8" onSubmit={handleSubmit}>
+                                            <div>
+                                                <label htmlFor="text" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your Name</label>
+                                                <input
+                                                    id="text"
+                                                    name="input1"
+                                                    value={inputValues.input1}
+                                                    onChange={handleChange}
+                                                    type="text"
+                                                    autoComplete="current-password"
+                                                    required
+                                                    className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                    placeholder="Name..."
+                                                />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+                                                <input
+                                                    id="email"
+                                                    name="input2"
+                                                    value={inputValues.input2}
+                                                    onChange={handleChange}
+                                                    type="email"
+                                                    autoComplete="current-password"
+                                                    required
+                                                    className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                    placeholder="xyz@email.com"
+                                                />
+                                            </div>
+                                            <div className="sm:col-span-2">
+                                                <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+                                                <textarea
+                                                    id="message"
+                                                    name="input3"
+                                                    value={inputValues.input3}
+                                                    onChange={handleChange}
+                                                    className="relative block w-full appearance-none  rounded-md border border-linegrey px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                    placeholder="Leave a comment..."></textarea>
+                                            </div>
+                                            <button
+                                                type="submit"
+                                                onClick={handleClick}
+                                                disabled={isDisabled}
+                                                className="py-3 px-5 text-sm disabled:opacity-50 font-medium w-full text-center text-white rounded-lg bg-blue focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                Send message
+                                            </button>
+                                        </form>
+                                    </div>
+                                </Dialog.Panel>
+                            </Transition.Child>
+                        </div>
+                    </div>
+                </Dialog>
+            </Transition>
         </section>
     );
 };
 
 export default ServicesSection;
+
+
