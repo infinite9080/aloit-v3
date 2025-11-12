@@ -11,6 +11,11 @@
 body {
   margin: 0;
   font-family: 'Urbanist', sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 html:not([data-scroll="0"]) .navbar {
@@ -373,14 +378,142 @@ html {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.333%);
   }
 }
 
 .animate-scroll-logos {
-  animation: scroll-logos 30s linear infinite;
+  animation: scroll-logos 40s linear infinite;
+  will-change: transform;
 }
 
 .animate-scroll-logos:hover {
   animation-play-state: paused;
 }
+
+/* Radar Sweep Animation */
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 3s linear infinite;
+  transform-origin: center;
+}
+
+/* Radar Pulse Animation */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(3.7);
+  }
+  100% {
+    transform: scale(3.7);
+    opacity: 0;
+  }
+}
+
+.animate-radar-pulse {
+  animation: radar-pulse 3s ease-out infinite;
+  animation-delay: 1s;
+  transform-origin: center;
+}
+
+/* Threat Icon Animations - Reveal, pulse, then destroy */
+@keyframes threat-scan {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+    filter: blur(0px);
+  }
+  /* Quick fade in when radar sweeps over */
+  3% {
+    opacity: 1;
+    transform: scale(1.1) rotate(0deg);
+    filter: blur(0px);
+  }
+  /* Stay visible and pulse slightly */
+  8% {
+    opacity: 0.9;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+  25% {
+    opacity: 0.85;
+    transform: scale(1.05) rotate(0deg);
+    filter: blur(0px);
+  }
+  /* Destruction animation - explode and fade */
+  28% {
+    opacity: 0.9;
+    transform: scale(1.3) rotate(5deg);
+    filter: blur(0px);
+  }
+  32% {
+    opacity: 0.5;
+    transform: scale(1.5) rotate(-10deg);
+    filter: blur(2px);
+  }
+  35% {
+    opacity: 0;
+    transform: scale(2) rotate(15deg);
+    filter: blur(4px);
+  }
+  /* Stay hidden until next scan */
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+.radar-threats image {
+  transform-origin: center;
+  opacity: 0;
+  animation: threat-scan 3s ease-in-out infinite;
+}
+
+/* Position-based delays synced with 3s radar rotation */
+/* Top - 0° */
+.radar-threats image:nth-child(1) { animation-delay: 0s; }
+
+/* Top-right - ~30° */
+.radar-threats image:nth-child(2) { animation-delay: 0.25s; }
+
+/* Right - ~90° */
+.radar-threats image:nth-child(3) { animation-delay: 0.75s; }
+
+/* Right-bottom - ~120° */
+.radar-threats image:nth-child(4) { animation-delay: 1s; }
+
+/* Bottom - ~180° */
+.radar-threats image:nth-child(5) { animation-delay: 1.5s; }
+
+/* Left - ~270° */
+.radar-threats image:nth-child(6) { animation-delay: 2.25s; }
+
+/* Bottom-right - ~150° */
+.radar-threats image:nth-child(7) { animation-delay: 1.25s; }
+
+/* Bottom-left - ~210° */
+.radar-threats image:nth-child(8) { animation-delay: 1.75s; }
+
+/* Left-bottom - ~240° */
+.radar-threats image:nth-child(9) { animation-delay: 2s; }
+
+/* Top-left - ~300° */
+.radar-threats image:nth-child(10) { animation-delay: 2.5s; }
+
+/* Bottom-left - ~255° */
+.radar-threats image:nth-child(11) { animation-delay: 2.13s; }

@@ -17,7 +17,7 @@ const products = [
             "Identity Governance",
             "Compliance Reporting"
         ],
-        landingPage: "/products/niam"
+        landingPage: "https://niam.nnur.ca/"
     },
     {
         name: "nAMS",
@@ -32,7 +32,7 @@ const products = [
             "Regulatory Reporting",
             "Audit Trail Documentation"
         ],
-        landingPage: "/products/nams"
+        landingPage: "https://nams.nnur.ca/"
     },
     {
         name: "nBsuits",
@@ -47,7 +47,7 @@ const products = [
             "Business Intelligence",
             "Real-time Analytics"
         ],
-        landingPage: "/products/nbsuits"
+        landingPage: "https://nbsuits.com/"
     },
     {
         name: "nISMA",
@@ -145,25 +145,6 @@ const ProductsPage = () => {
                     <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-25 my-1 sm:my-2 lg:ml-32">Benefits.</h3>
                 </div>
 
-                {/* Benefits Section */}
-                <div className={`product-benefits flex flex-col sm:flex-row sm:justify-around items-center gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16 transition-all duration-1200 ease-out delay-200 ${isVisible
-                    ? 'opacity-100 transform translate-y-0'
-                    : 'opacity-0 transform translate-y-10'
-                    }`}>
-                    <div className='flex items-center gap-3 sm:gap-4 justify-center'>
-                        <Image src="/images/manage/right.svg" alt="right-icon" width={16} height={12} className="sm:w-5 sm:h-4 flex-shrink-0" />
-                        <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>Enterprise-Grade Security</h4>
-                    </div>
-                    <div className='flex items-center gap-3 sm:gap-4 justify-center'>
-                        <Image src="/images/manage/right.svg" alt="right-icon" width={16} height={12} className="sm:w-5 sm:h-4 flex-shrink-0" />
-                        <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>24/7 Support & Maintenance</h4>
-                    </div>
-                    <div className='flex items-center gap-3 sm:gap-4 justify-center'>
-                        <Image src="/images/manage/right.svg" alt="right-icon" width={16} height={12} className="sm:w-5 sm:h-4 flex-shrink-0" />
-                        <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>Scalable Solutions</h4>
-                    </div>
-                </div>
-
                 {/* Products Tabs */}
                 <div className={`flex justify-center transition-all duration-1200 ease-out delay-400 ${isVisible
                     ? 'opacity-100 transform translate-y-0'
@@ -226,6 +207,25 @@ const ProductsPage = () => {
                             ),
                         }))}
                     />
+                </div>
+
+                {/* Benefits Section */}
+                <div className={`product-benefits flex flex-col sm:flex-row sm:justify-around items-center gap-4 sm:gap-6 mt-8 sm:mt-12 lg:mt-16 transition-all duration-1200 ease-out delay-600 ${isVisible
+                    ? 'opacity-100 transform translate-y-0'
+                    : 'opacity-0 transform translate-y-10'
+                    }`}>
+                    <div className='flex items-center gap-3 sm:gap-4 justify-center'>
+                        <Image src="/images/manage/right.svg" alt="right-icon" width={16} height={12} className="sm:w-5 sm:h-4 flex-shrink-0" />
+                        <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>Enterprise-Grade Security</h4>
+                    </div>
+                    <div className='flex items-center gap-3 sm:gap-4 justify-center'>
+                        <Image src="/images/manage/right.svg" alt="right-icon" width={16} height={12} className="sm:w-5 sm:h-4 flex-shrink-0" />
+                        <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>24/7 Support & Maintenance</h4>
+                    </div>
+                    <div className='flex items-center gap-3 sm:gap-4 justify-center'>
+                        <Image src="/images/manage/right.svg" alt="right-icon" width={16} height={12} className="sm:w-5 sm:h-4 flex-shrink-0" />
+                        <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>Scalable Solutions</h4>
+                    </div>
                 </div>
             </div>
         </div>

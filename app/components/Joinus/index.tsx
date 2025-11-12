@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 const Join = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '' });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -37,10 +39,35 @@ const Join = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            const response = await fetch('https://formspree.io/f/xblqjedn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                setFormData({ name: '', email: '' });
+                setTimeout(() => setSubmitStatus('idle'), 5000);
+            } else {
+                setSubmitStatus('error');
+                setTimeout(() => setSubmitStatus('idle'), 5000);
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setSubmitStatus('error');
+            setTimeout(() => setSubmitStatus('idle'), 5000);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -94,9 +121,10 @@ const Join = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="bg-neoncyan hover:bg-darkpurple text-white font-semibold py-4 px-8 lg:px-12 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-base lg:text-lg whitespace-nowrap"
+                                disabled={isSubmitting}
+                                className="bg-neoncyan hover:bg-darkpurple text-white font-semibold py-4 px-8 lg:px-12 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-base lg:text-lg whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Get Started
+                                {isSubmitting ? 'Submitting...' : 'Get Started'}
                             </button>
                         </div>
 
@@ -126,11 +154,24 @@ const Join = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-neoncyan hover:bg-darkpurple text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-base"
+                                disabled={isSubmitting}
+                                className="w-full bg-neoncyan hover:bg-darkpurple text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-base disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Get Started
+                                {isSubmitting ? 'Submitting...' : 'Get Started'}
                             </button>
                         </div>
+
+                        {/* Success/Error Messages */}
+                        {submitStatus === 'success' && (
+                            <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center">
+                                Thank you! We&apos;ll be in touch soon.
+                            </div>
+                        )}
+                        {submitStatus === 'error' && (
+                            <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">
+                                Something went wrong. Please try again.
+                            </div>
+                        )}
                     </form>
                 </div>
 

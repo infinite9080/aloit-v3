@@ -112,7 +112,7 @@ const Aboutus = () => {
                                 {/* CTA Button - Matching your style */}
                                 <Link
                                     href={item.link}
-                                    className="inline-flex items-center gap-2 bg-neoncyan hover:bg-darkpurple text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+                                    className="relative z-10 inline-flex items-center gap-2 bg-neoncyan hover:bg-darkpurple text-white font-bold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
                                 >
                                     <span>Learn More</span>
                                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

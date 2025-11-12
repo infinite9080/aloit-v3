@@ -86,16 +86,6 @@ const OurTeamPage = () => {
                     <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkpurple opacity-25 my-1 sm:my-2 lg:ml-32">Dedicated.</h3>
                 </div>
 
-                {/* Introduction */}
-                <div className={`text-center mb-12 sm:mb-16 lg:mb-20 max-w-3xl mx-auto transition-all duration-1200 ease-out delay-200 ${isVisible
-                    ? 'opacity-100 transform translate-y-0'
-                    : 'opacity-0 transform translate-y-10'
-                    }`}>
-                    <p className="text-base sm:text-lg text-darkpurple/80 leading-relaxed">
-                        Meet the cybersecurity experts behind AloIT Consultant. Our team brings decades of combined experience in protecting organizations from evolving cyber threats and ensuring compliance with industry standards.
-                    </p>
-                </div>
-
                 {/* Team Grid */}
                 <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto transition-all duration-1200 ease-out delay-400 ${isVisible
                     ? 'opacity-100 transform translate-y-0'

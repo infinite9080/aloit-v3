@@ -3,7 +3,7 @@ import { Disclosure } from '@headlessui/react';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
-import Contactusform from './Contactus';
+import ContactModal from '../ContactModal';
 import Image from 'next/image';
 
 interface NavigationItem {
@@ -26,6 +26,7 @@ function classNames(...classes: string[]) {
 const Navbar = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -84,7 +85,12 @@ const Navbar = () => {
 
                             {/* CTA BUTTON */}
                             <div className="mr-5 hidden lg:flex items-center">
-                                <Contactusform />
+                                <button
+                                    onClick={() => setIsContactModalOpen(true)}
+                                    className="bg-neoncyan text-white font-semibold py-2 px-6 rounded-full hover:bg-darkpurple transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                >
+                                    Contact Us
+                                </button>
                             </div>
 
                             {/* MOBILE MENU BUTTON */}
@@ -112,7 +118,10 @@ const Navbar = () => {
                                             ))}
                                             <div className="border-t border-neoncyan/10 mt-2 pt-2 px-6">
                                                 <button
-                                                    onClick={() => setIsOpen(false)}
+                                                    onClick={() => {
+                                                        setIsOpen(false);
+                                                        setIsContactModalOpen(true);
+                                                    }}
                                                     className="w-full bg-neoncyan text-white font-semibold py-2 px-4 rounded-xl hover:bg-darkpurple transition-colors duration-300"
                                                 >
                                                     Contact
@@ -126,6 +135,9 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Contact Modal */}
+                <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
             </>
         </Disclosure>
     )

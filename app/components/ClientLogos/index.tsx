@@ -44,8 +44,8 @@ const ClientLogos = () => {
     ];
 
     return (
-        <section className="py-16 bg-gray-50 border-t border-gray-100">
-            <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] py-16 bg-gradient-to-br from-neoncyan/5 via-blue-50/50 to-purple-50/30 border-t border-gray-100">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 {/* Trusted by text */}
                 <div className="text-center mb-12">
                     <p className="text-sm font-semibold text-darkpurple/60 tracking-wide uppercase">

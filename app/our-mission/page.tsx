@@ -25,7 +25,7 @@ export default function OurMission() {
                         <section>
                             <h2 className="text-2xl font-bold text-darkpurple mb-4">What Drives Us</h2>
                             <p className="text-darkpurple/80 leading-relaxed mb-4">
-                                In today's rapidly evolving digital landscape, organizations face unprecedented challenges in securing their data, maintaining compliance, and ensuring business continuity. Our mission is rooted in the belief that every enterprise deserves access to world-class security and compliance solutions, regardless of their size or industry.
+                                In today&apos;s rapidly evolving digital landscape, organizations face unprecedented challenges in securing their data, maintaining compliance, and ensuring business continuity. Our mission is rooted in the belief that every enterprise deserves access to world-class security and compliance solutions, regardless of their size or industry.
                             </p>
                         </section>
 
@@ -35,7 +35,7 @@ export default function OurMission() {
                                 <div className="bg-gray-50 rounded-lg p-6">
                                     <h3 className="text-xl font-semibold text-darkpurple mb-3">Innovation First</h3>
                                     <p className="text-darkpurple/80">
-                                        We continuously explore and implement cutting-edge technologies to deliver solutions that not only meet today's challenges but anticipate tomorrow's needs.
+                                        We continuously explore and implement cutting-edge technologies to deliver solutions that not only meet today&apos;s challenges but anticipate tomorrow&apos;s needs.
                                     </p>
                                 </div>
 
@@ -65,7 +65,7 @@ export default function OurMission() {
                         <section>
                             <h2 className="text-2xl font-bold text-darkpurple mb-4">Making a Difference</h2>
                             <p className="text-darkpurple/80 leading-relaxed mb-4">
-                                Every day, we work alongside our clients to build resilient, secure, and compliant digital infrastructures. Our mission extends beyond technology implementation—we're dedicated to empowering organizations with the knowledge, tools, and confidence they need to thrive in an increasingly connected world.
+                                Every day, we work alongside our clients to build resilient, secure, and compliant digital infrastructures. Our mission extends beyond technology implementation—we&apos;re dedicated to empowering organizations with the knowledge, tools, and confidence they need to thrive in an increasingly connected world.
                             </p>
                             <p className="text-darkpurple/80 leading-relaxed">
                                 Through strategic consultancy, hands-on implementation, and ongoing support, we help businesses transform their security and compliance challenges into competitive advantages.

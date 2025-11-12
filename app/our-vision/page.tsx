@@ -11,7 +11,7 @@ export default function OurVision() {
                         Our Vision
                     </h1>
                     <p className="text-lg text-darkpurple/70">
-                        Leading South Asia's Digital Security Future
+                        Leading South Asia&apos;s Digital Security Future
                     </p>
                 </div>
 
@@ -20,7 +20,7 @@ export default function OurVision() {
                     <div className="space-y-8">
                         
                         <p className="text-xl text-darkpurple/80 leading-relaxed mb-6">
-                            To become South Asia's most reliable partner for digital security and enterprise transformation, enabling every organization to operate with confidence, compliance, and continuity in a connected world.
+                            To become South Asia&apos;s most reliable partner for digital security and enterprise transformation, enabling every organization to operate with confidence, compliance, and continuity in a connected world.
                         </p>
 
                         <section>
@@ -31,7 +31,7 @@ export default function OurVision() {
                         </section>
 
                         <section>
-                            <h2 className="text-2xl font-bold text-darkpurple mb-4">The Future We're Building</h2>
+                            <h2 className="text-2xl font-bold text-darkpurple mb-4">The Future We&apos;re Building</h2>
                             <div className="space-y-4">
                                 <div className="bg-gray-50 rounded-lg p-6">
                                     <h3 className="text-xl font-semibold text-darkpurple mb-3">Regional Leadership</h3>
@@ -50,14 +50,14 @@ export default function OurVision() {
                                 <div className="bg-gray-50 rounded-lg p-6">
                                     <h3 className="text-xl font-semibold text-darkpurple mb-3">Seamless Compliance</h3>
                                     <p className="text-darkpurple/80">
-                                        We envision a world where compliance is no longer a burden but a seamless part of business operations. Through intelligent automation and expert guidance, we're making regulatory adherence effortless and efficient.
+                                        We envision a world where compliance is no longer a burden but a seamless part of business operations. Through intelligent automation and expert guidance, we&apos;re making regulatory adherence effortless and efficient.
                                     </p>
                                 </div>
 
                                 <div className="bg-gray-50 rounded-lg p-6">
                                     <h3 className="text-xl font-semibold text-darkpurple mb-3">Business Continuity</h3>
                                     <p className="text-darkpurple/80">
-                                        In an increasingly unpredictable world, we're committed to ensuring that businesses can maintain operations regardless of challenges. Our vision includes building resilient systems that guarantee continuity and minimize disruption.
+                                        In an increasingly unpredictable world, we&apos;re committed to ensuring that businesses can maintain operations regardless of challenges. Our vision includes building resilient systems that guarantee continuity and minimize disruption.
                                     </p>
                                 </div>
                             </div>
@@ -69,14 +69,14 @@ export default function OurVision() {
                                 As the world becomes more interconnected, the challenges of security, compliance, and operational efficiency grow more complex. Our vision acknowledges this reality and embraces it as an opportunity to innovate and lead.
                             </p>
                             <p className="text-darkpurple/80 leading-relaxed mb-4">
-                                We're building solutions that not only address today's challenges but anticipate tomorrow's needs. Through continuous innovation, strategic partnerships, and unwavering commitment to excellence, we're creating a future where digital transformation is accessible, secure, and sustainable for all.
+                                We&apos;re building solutions that not only address today&apos;s challenges but anticipate tomorrow&apos;s needs. Through continuous innovation, strategic partnerships, and unwavering commitment to excellence, we&apos;re creating a future where digital transformation is accessible, secure, and sustainable for all.
                             </p>
                         </section>
 
                         <section>
                             <h2 className="text-2xl font-bold text-darkpurple mb-4">Join Us on This Journey</h2>
                             <p className="text-darkpurple/80 leading-relaxed">
-                                Our vision is ambitious, but it's grounded in the real needs of businesses across South Asia. Every client we serve, every solution we implement, and every challenge we overcome brings us one step closer to realizing this vision. Together, we're building a more secure, compliant, and resilient digital future.
+                                Our vision is ambitious, but it&apos;s grounded in the real needs of businesses across South Asia. Every client we serve, every solution we implement, and every challenge we overcome brings us one step closer to realizing this vision. Together, we&apos;re building a more secure, compliant, and resilient digital future.
                             </p>
                         </section>
 

@@ -1,9 +1,11 @@
 "use client"
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import ContactModal from "../ContactModal";
 
 const Digital = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -66,7 +68,10 @@ const Digital = () => {
                                 ? 'opacity-100 transform translate-y-0'
                                 : 'opacity-0 transform translate-y-5'
                                 }`}>
-                                <button className="text-base sm:text-lg lg:text-xl font-semibold text-white bg-btnblue py-3 px-8 sm:py-4 sm:px-10 lg:px-12 hover:bg-hoblue rounded-full hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+                                <button 
+                                    onClick={() => setIsContactModalOpen(true)}
+                                    className="text-base sm:text-lg lg:text-xl font-semibold text-white bg-btnblue py-3 px-8 sm:py-4 sm:px-10 lg:px-12 hover:bg-hoblue rounded-full hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+                                >
                                     Request Security Assessment
                                 </button>
                             </div>
@@ -91,6 +96,9 @@ const Digital = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Contact Modal */}
+            <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
         </div>
     )
 }

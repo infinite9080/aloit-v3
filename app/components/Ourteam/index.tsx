@@ -379,81 +379,44 @@ const ServicesSection = () => {
                     ? 'opacity-100 transform translate-y-0'
                     : 'opacity-0 transform translate-y-10'
                     }`}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {serviceCategories[activeCategory].services.map((service, index) => {
-                            // Create dynamic masonry-style layout
-                            const patterns = [
-                                'lg:col-span-2 lg:row-span-2', // Large
-                                'lg:col-span-2', // Wide
-                                'lg:col-span-2', // Wide
-                                'lg:col-span-2 lg:row-span-2', // Large
-                                'lg:col-span-2', // Wide
-                            ];
-                            const pattern = patterns[index % patterns.length];
-
                             return (
                                 <div
                                     key={index}
-                                    className={`group bg-white rounded-3xl overflow-hidden transition-all duration-75 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] hover:-translate-y-2 ${pattern} ${isVisible
+                                    className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-neoncyan/10 hover:-translate-y-1 hover:border-neoncyan/30 ${isVisible
                                         ? 'opacity-100 transform scale-100'
                                         : 'opacity-0 transform scale-95'
                                         }`}
                                     style={{ transitionDelay: `${index * 100 + 600}ms` }}
                                 >
-                                    {/* Image Section */}
-                                    <div className="relative h-40 overflow-hidden">
-                                        {/* Placeholder gradient background */}
-                                        <div className="absolute inset-0 bg-gradient-to-br from-neoncyan/20 via-blue-500/20 to-purple-500/20"></div>
+                                    {/* Gradient accent bar */}
+                                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neoncyan via-blue-500 to-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
 
-                                        {/* Image - Replace with actual service images */}
-                                        <Image
-                                            src={service.image}
-                                            alt={service.title}
-                                            fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-100"
-                                        />
+                                    {/* Icon and badge section */}
+                                    <div className="relative p-6 pb-4">
+                                        <div className="flex items-start justify-between mb-4">
+                                            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-neoncyan/10 to-blue-500/10 flex items-center justify-center text-neoncyan group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                                                {service.icon}
+                                            </div>
+                                            <div className="w-2 h-2 rounded-full bg-neoncyan animate-pulse shadow-lg shadow-neoncyan/50"></div>
+                                        </div>
 
-                                        {/* Overlay gradient */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-75"></div>
-
-                                        {/* Badge */}
-                                        <div className="absolute top-4 right-4 w-3 h-3 bg-neoncyan rounded-full animate-pulse shadow-lg shadow-neoncyan/50"></div>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className={`p-5 bg-gradient-to-b from-white to-gray-50/50 flex flex-col ${pattern.includes('row-span-2') ? 'min-h-[240px]' : ''}`}>
-                                        <h3 className={`font-bold text-darkpurple mb-3 group-hover:text-neoncyan transition-colors duration-75 ${pattern.includes('row-span-2') ? 'text-2xl' : 'text-xl'}`}>
+                                        <h3 className="text-xl font-bold text-darkpurple mb-3 group-hover:text-neoncyan transition-colors duration-300">
                                             {service.title}
                                         </h3>
-                                        <p className={`text-darkpurple/70 leading-relaxed ${pattern.includes('row-span-2') ? 'text-base mb-4' : 'text-sm line-clamp-3'}`}>
+
+                                        <p className="text-sm text-darkpurple/70 leading-relaxed line-clamp-4 mb-4">
                                             {service.description}
                                         </p>
+                                    </div>
 
-                                        {/* Additional content for large cards */}
-                                        {pattern.includes('row-span-2') && (
-                                            <div className="mt-auto pt-4 border-t border-gray-200">
-                                                <div className="space-y-3">
-                                                    <div className="flex items-start gap-2">
-                                                        <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                        </svg>
-                                                        <span className="text-sm text-darkpurple/70">Comprehensive vulnerability assessment and remediation guidance</span>
-                                                    </div>
-                                                    <div className="flex items-start gap-2">
-                                                        <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                        </svg>
-                                                        <span className="text-sm text-darkpurple/70">Detailed reporting with actionable recommendations</span>
-                                                    </div>
-                                                    <div className="flex items-start gap-2">
-                                                        <svg className="w-5 h-5 text-neoncyan flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                                        </svg>
-                                                        <span className="text-sm text-darkpurple/70">Industry-standard methodologies and best practices</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        )}
+
+
+                                    {/* Subtle background pattern */}
+                                    <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none">
+                                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-neoncyan to-transparent rounded-full blur-3xl"></div>
+                                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-500 to-transparent rounded-full blur-3xl"></div>
                                     </div>
                                 </div>
                             );

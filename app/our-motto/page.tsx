@@ -21,14 +21,14 @@ export default function OurMotto() {
                         
                         <div className="bg-gradient-to-r from-neoncyan/10 to-neoncyan/5 rounded-2xl p-8 mb-12 border-l-4 border-neoncyan">
                             <p className="text-2xl sm:text-3xl font-semibold text-darkpurple italic text-center">
-                                "Your Trusted Partner in Digital Transformation"
+                                &ldquo;Your Trusted Partner in Digital Transformation&rdquo;
                             </p>
                         </div>
 
                         <section>
                             <h2 className="text-2xl font-bold text-darkpurple mb-4">What It Means</h2>
                             <p className="text-darkpurple/80 leading-relaxed mb-4">
-                                Our motto encapsulates the essence of our relationship with every client. We're not just a service provider—we're a partner invested in your success, committed to walking alongside you through every step of your digital transformation journey.
+                                Our motto encapsulates the essence of our relationship with every client. We&apos;re not just a service provider—we&apos;re a partner invested in your success, committed to walking alongside you through every step of your digital transformation journey.
                             </p>
                         </section>
 
@@ -82,7 +82,7 @@ export default function OurMotto() {
                                 Every interaction, every solution, and every decision we make is guided by this motto. We measure our success not just by the systems we implement, but by the lasting relationships we build and the transformative impact we create for our clients.
                             </p>
                             <p className="text-darkpurple/80 leading-relaxed">
-                                When you choose us, you're not just selecting a vendor—you're gaining a dedicated partner who is genuinely invested in your digital transformation success story.
+                                When you choose us, you&apos;re not just selecting a vendor—you&apos;re gaining a dedicated partner who is genuinely invested in your digital transformation success story.
                             </p>
                         </section>
 

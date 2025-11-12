@@ -17,7 +17,7 @@ const products = [
             "Identity Governance",
             "Compliance Reporting"
         ],
-        landingPage: "/products/niam"
+        landingPage: "https://niam.nnur.ca/"
     },
     {
         name: "nAMS",
@@ -32,7 +32,7 @@ const products = [
             "Regulatory Reporting",
             "Audit Trail Documentation"
         ],
-        landingPage: "/products/nams"
+        landingPage: "https://nams.nnur.ca/"
     },
     {
         name: "nBsuits",
@@ -47,7 +47,7 @@ const products = [
             "Business Intelligence",
             "Real-time Analytics"
         ],
-        landingPage: "/products/nbsuits"
+        landingPage: "https://nbsuits.com/"
     },
     {
         name: "nISMA",
