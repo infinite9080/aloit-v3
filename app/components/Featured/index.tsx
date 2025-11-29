@@ -20,7 +20,7 @@ const postData: DataType[] = [
     {
         heading: 'nAMS - Audit Management Software',
         description: 'Streamline your audit processes with automated workflows, compliance tracking, and comprehensive reporting capabilities for regulatory requirements.',
-        imgSrc: '/nams-feature.png',
+        imgSrc: '/nams-feature.jpeg',
     },
     {
         heading: 'nBsuits - Enterprise Resource Planning',

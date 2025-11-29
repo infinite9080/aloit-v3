@@ -384,11 +384,15 @@ const ServicesSection = () => {
                             return (
                                 <div
                                     key={index}
-                                    className={`group relative bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-neoncyan/10 hover:-translate-y-1 hover:border-neoncyan/30 ${isVisible
+                                    className={`group relative bg-white/60 backdrop-blur-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-neoncyan/20 hover:-translate-y-2 hover:bg-white/70 ${isVisible
                                         ? 'opacity-100 transform scale-100'
                                         : 'opacity-0 transform scale-95'
                                         }`}
-                                    style={{ transitionDelay: `${index * 100 + 600}ms` }}
+                                    style={{
+                                        transitionDelay: `${index * 100 + 600}ms`,
+                                        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                                        border: '1px solid rgba(255, 255, 255, 0.18)'
+                                    }}
                                 >
                                     {/* Gradient accent bar */}
                                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neoncyan via-blue-500 to-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>

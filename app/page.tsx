@@ -1,4 +1,5 @@
 import Banner from './components/Banner/index';
+import CompanyLogos from './components/CompanyLogos/index';
 import Aboutus from './components/Aboutus/index';
 import Dedicated from './components/Dedicated/index';
 import Digital from './components/Digital/index';
@@ -11,8 +12,9 @@ import Testimonials from './components/Testimonials/index';
 
 export default function Home() {
   return (
-    <main className="pt-20">
+    <main>
       <Banner />
+      <CompanyLogos />
       <Aboutus />
       <Dedicated />
       <Digital />
