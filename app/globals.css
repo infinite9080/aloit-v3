@@ -383,7 +383,7 @@ html {
 }
 
 .animate-scroll-logos {
-  animation: scroll-logos 40s linear infinite;
+  animation: scroll-logos 10s linear infinite;
   will-change: transform;
 }
 
