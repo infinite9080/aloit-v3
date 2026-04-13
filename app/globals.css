@@ -18,6 +18,11 @@ html {
   overflow-x: hidden;
 }
 
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+}
+
 html:not([data-scroll="0"]) .navbar {
   position: fixed;
   top: 0;
@@ -28,23 +33,6 @@ html:not([data-scroll="0"]) .navbar {
   transition: 0.4s linear;
   padding: 0px !important;
   z-index: 100;
-}
-
-html:not([data-scroll="0"]) .navbar>div>div {
-  height: 3rem;
-}
-
-html:not([data-scroll="0"]) .border-right {
-  height: 4rem;
-}
-
-html {
-  --scroll-behavior: smooth !important;
-  scroll-behavior: smooth !important;
-}
-
-.navbar {
-  border-bottom: 0.5px solid rgba(196, 196, 196, 0.75);
 }
 
 .hover-underline {
@@ -530,4 +518,74 @@ html {
 
 .animate-blink {
   animation: blink 1s infinite;
+}
+
+/* Wave Animations for Hero Section */
+@keyframes wave-1 {
+  0%, 100% {
+    d: path("M0,400 C360,500 720,300 1080,400 C1260,450 1380,380 1440,400 L1440,800 L0,800 Z");
+  }
+  50% {
+    d: path("M0,420 C360,480 720,340 1080,420 C1260,470 1380,360 1440,420 L1440,800 L0,800 Z");
+  }
+}
+
+@keyframes wave-2 {
+  0%, 100% {
+    d: path("M0,450 C320,350 640,550 960,450 C1200,380 1360,500 1440,450 L1440,800 L0,800 Z");
+  }
+  50% {
+    d: path("M0,470 C320,390 640,530 960,470 C1200,400 1360,480 1440,470 L1440,800 L0,800 Z");
+  }
+}
+
+@keyframes wave-3 {
+  0%, 100% {
+    d: path("M0,500 C400,600 800,400 1200,500 C1320,530 1400,480 1440,500 L1440,800 L0,800 Z");
+  }
+  50% {
+    d: path("M0,520 C400,580 800,440 1200,520 C1320,550 1400,460 1440,520 L1440,800 L0,800 Z");
+  }
+}
+
+.animate-wave-1 {
+  animation: wave-1 8s ease-in-out infinite;
+}
+
+.animate-wave-2 {
+  animation: wave-2 6s ease-in-out infinite;
+}
+
+.animate-wave-3 {
+  animation: wave-3 5s ease-in-out infinite;
+}
+
+/* Gradient Animation for Navbar */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Slide Down Animation */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out;
 }

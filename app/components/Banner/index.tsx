@@ -54,23 +54,36 @@ const Banner = () => {
     }, [displayedText, isTyping, currentTextIndex]);
 
     return (
-        <div className='relative min-h-screen flex items-center overflow-hidden'>
-            {/* Background Video */}
-            <div className="absolute inset-0 z-0 overflow-hidden bg-bgblue">
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover opacity-100"
-                >
-                    <source src="/banner.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-r from-bgblue via-bgblue/90 to-transparent"></div>
+        <div className='relative min-h-screen flex items-center' style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1E013A 50%, #00224A 100%)' }}>
+            {/* Background Elements */}
+            <div className="absolute inset-0" style={{ overflow: 'hidden' }}>
+                {/* Animated Wave Layers */}
+                <svg className="absolute bottom-0 left-0 w-full h-full" style={{ opacity: 0.2 }} viewBox="0 0 1440 800" preserveAspectRatio="none">
+                    {/* Wave 1 - Slow */}
+                    <path className="animate-wave-1" fill="rgba(96, 165, 250, 0.15)"
+                        d="M0,400 C360,500 720,300 1080,400 C1260,450 1380,380 1440,400 L1440,800 L0,800 Z">
+                    </path>
+                    {/* Wave 2 - Medium */}
+                    <path className="animate-wave-2" fill="rgba(96, 165, 250, 0.1)"
+                        d="M0,450 C320,350 640,550 960,450 C1200,380 1360,500 1440,450 L1440,800 L0,800 Z">
+                    </path>
+                    {/* Wave 3 - Fast */}
+                    <path className="animate-wave-3" fill="rgba(96, 165, 250, 0.08)"
+                        d="M0,500 C400,600 800,400 1200,500 C1320,530 1400,480 1440,500 L1440,800 L0,800 Z">
+                    </path>
+                </svg>
+
+                {/* Glowing Orbs */}
+                <div className="absolute top-10 right-20 w-96 h-96 rounded-full animate-pulse" style={{ background: 'rgba(96, 165, 250, 0.2)', filter: 'blur(100px)' }}></div>
+                <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full animate-pulse" style={{ background: 'rgba(37, 99, 235, 0.2)', filter: 'blur(100px)', animationDelay: '1.5s' }}></div>
+                <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full animate-pulse" style={{ background: 'rgba(34, 211, 238, 0.15)', filter: 'blur(80px)', animationDelay: '0.8s' }}></div>
+
+                {/* Dot Grid Pattern */}
+                <div className="absolute inset-0" style={{ opacity: 0.1, backgroundImage: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
             </div>
 
-            <div className='relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 w-full'>
+            {/* Content - Higher Z-Index */}
+            <div className='relative z-[100] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 w-full'>
                 <div className='max-w-4xl'>
 
                     {/* Content */}
@@ -95,7 +108,7 @@ const Banner = () => {
                                 </div>
                                 <div className="text-neoncyan text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold mb-4">
                                     {displayedText}
-                                    <span className="animate-blink">|</span>
+                                    <span className="animate-blink text-white">|</span>
                                 </div>
 
                                 <div className="text-white text-xl sm:text-2xl md:text-3xl lg:text-3xl font-medium">
@@ -120,7 +133,7 @@ const Banner = () => {
                                 <span className="relative z-10 text-lg">Start Free Assessment</span>
                             </button>
 
-                            <button className="group flex items-center gap-3 bg-white/10 border-2 border-white/40 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 hover:bg-white hover:text-darkpurple hover:shadow-lg backdrop-blur-sm">
+                            <button className="group flex items-center gap-3 bg-white/10 border-2 border-white/40 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 hover:bg-white hover:text-darkblue hover:shadow-lg backdrop-blur-sm">
                                 <svg className="w-6 h-6 transition-colors" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                                 </svg>
