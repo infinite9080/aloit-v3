@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from "react";
 import ContactModal from "../ContactModal";
+import Navbar from "../Navbar/Navbar";
 
 const Banner = () => {
 
@@ -55,6 +56,9 @@ const Banner = () => {
 
     return (
         <div className='relative min-h-screen flex items-center' style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1E013A 50%, #00224A 100%)' }}>
+            {/* Navbar */}
+            <Navbar />
+            
             {/* Background Elements */}
             <div className="absolute inset-0" style={{ overflow: 'hidden' }}>
                 {/* Animated Wave Layers */}
@@ -82,8 +86,8 @@ const Banner = () => {
                 <div className="absolute inset-0" style={{ opacity: 0.1, backgroundImage: 'radial-gradient(circle, rgba(96, 165, 250, 0.3) 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
             </div>
 
-            {/* Content - Higher Z-Index */}
-            <div className='relative z-[100] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 w-full'>
+            {/* Content */}
+            <div className='relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:py-20 lg:py-24 w-full'>
                 <div className='max-w-4xl'>
 
                     {/* Content */}
@@ -142,13 +146,13 @@ const Banner = () => {
                         </div>
 
                         {/* Trust Indicators */}
-                        <div className="mt-12 lg:mt-16">
+                        {/* <div className="mt-12 lg:mt-16">
                             <div className="flex flex-wrap justify-start items-center gap-6 text-sm text-white/70">
                                 <div className="flex items-center gap-2">
                                     <svg className="w-5 h-5 text-neoncyan" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                     </svg>
-                                    <span className="font-medium">SOC 2 Certified</span>
+                                    <span className="font-medium">SOC 2</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <svg className="w-5 h-5 text-neoncyan" fill="currentColor" viewBox="0 0 20 20">
@@ -163,7 +167,7 @@ const Banner = () => {
                                     <span className="font-medium">GDPR Compliant</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

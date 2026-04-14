@@ -7,6 +7,7 @@ const Dedicated = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -14,17 +15,16 @@ const Dedicated = () => {
                 }
             },
             {
-                threshold: 0.3, // Trigger when 30% of the section is visible
-                rootMargin: '0px 0px -100px 0px' // Start animation slightly before fully visible
+                threshold: 0.3,
+                rootMargin: '0px 0px -100px 0px'
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            const currentRef = sectionRef.current;
             if (currentRef) {
                 observer.unobserve(currentRef);
             }
@@ -67,7 +67,7 @@ const Dedicated = () => {
                     {/* COLUMN-2 */}
                     <div className="ml-5 order-1 lg:order-2 relative text-center lg:text-left">
                         <Image
-                            src="images/dedicated/comma.svg"
+                            src="/images/dedicated/comma.svg"
                             alt="comma-image"
                             width={200}
                             height={106}

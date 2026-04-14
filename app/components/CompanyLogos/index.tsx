@@ -72,6 +72,15 @@ const CompanyLogos = () => {
                                 className="object-contain opacity-60 hover:opacity-100 transition-opacity"
                             />
                         </div>
+                        <div className="w-32 h-20 flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+                            <Image
+                                src="/mjf.png"
+                                alt="MJF Team"
+                                width={70}
+                                height={60}
+                                className="object-contain opacity-60 hover:opacity-100 transition-opacity"
+                            />
+                        </div>
                     </div>
                     {/* Duplicate set for seamless loop */}
                     <div className="flex items-center gap-12 px-6 flex-shrink-0">
@@ -124,6 +133,15 @@ const CompanyLogos = () => {
                             <Image
                                 src="/one zambia one nation.svg"
                                 alt="One Zambia One Nation"
+                                width={70}
+                                height={60}
+                                className="object-contain opacity-60 hover:opacity-100 transition-opacity"
+                            />
+                        </div>
+                        <div className="w-32 h-20 flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+                            <Image
+                                src="/mjf.png"
+                                alt="MJF Team"
                                 width={70}
                                 height={60}
                                 className="object-contain opacity-60 hover:opacity-100 transition-opacity"
@@ -186,6 +204,15 @@ const CompanyLogos = () => {
                                 className="object-contain opacity-60 hover:opacity-100 transition-opacity"
                             />
                         </div>
+                        <div className="w-32 h-20 flex items-center justify-center flex-shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+                            <Image
+                                src="/mjf.png"
+                                alt="MJF Team"
+                                width={70}
+                                height={60}
+                                className="object-contain opacity-60 hover:opacity-100 transition-opacity"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -201,10 +228,10 @@ const CompanyLogos = () => {
                         <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
                         <span className='text-sm text-darkpurple/70 font-medium'>99.9% Uptime</span>
                     </div>
-                    <div className='flex items-center gap-2'>
+                    {/* <div className='flex items-center gap-2'>
                         <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
                         <span className='text-sm text-darkpurple/70 font-medium'>ISO 27001 Certified</span>
-                    </div>
+                    </div> */}
                     <div className='flex items-center gap-2'>
                         <div className='w-2 h-2 bg-neoncyan rounded-full'></div>
                         <span className='text-sm text-darkpurple/70 font-medium'>24/7 Support</span>

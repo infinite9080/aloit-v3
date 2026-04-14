@@ -52,6 +52,7 @@ const Wework = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -64,12 +65,11 @@ const Wework = () => {
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            const currentRef = sectionRef.current;
             if (currentRef) {
                 observer.unobserve(currentRef);
             }

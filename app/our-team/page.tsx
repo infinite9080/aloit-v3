@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Navbar from "../components/Navbar/Navbar";
 
 const teamMembers = [
     {
@@ -42,6 +43,7 @@ const OurTeamPage = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -54,12 +56,11 @@ const OurTeamPage = () => {
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            const currentRef = sectionRef.current;
             if (currentRef) {
                 observer.unobserve(currentRef);
             }
@@ -67,7 +68,13 @@ const OurTeamPage = () => {
     }, []);
 
     return (
-        <div className="pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 xl:pb-32 bg-white overflow-hidden relative" ref={sectionRef}>
+        <div className="bg-white overflow-hidden relative" ref={sectionRef}>
+            {/* Dark Header for Navbar */}
+            <div className="relative h-20 bg-gradient-to-r from-[#0f172a] via-[#1E013A] to-[#00224A]">
+                <Navbar />
+            </div>
+            
+            <div className="pb-12 sm:pb-16 lg:pb-20 xl:pb-32">
             {/* Background Elements */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-20 left-10 w-32 h-32 border border-neoncyan/20 rounded-full animate-pulse"></div>
@@ -177,6 +184,7 @@ const OurTeamPage = () => {
                 </div>
 
 
+            </div>
             </div>
         </div>
     );

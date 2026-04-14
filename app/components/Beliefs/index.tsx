@@ -7,6 +7,7 @@ const Beliefs = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -14,18 +15,18 @@ const Beliefs = () => {
                 }
             },
             {
-                threshold: 0.2, // Trigger when 20% of the section is visible
+                threshold: 0.2,
                 rootMargin: '0px 0px -50px 0px'
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);

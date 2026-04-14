@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { AnimatedTabs } from '../components/AnimatedTabs';
+import Navbar from '../components/Navbar/Navbar';
 
 const products = [
     {
@@ -101,6 +102,7 @@ const ProductsPage = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -113,12 +115,11 @@ const ProductsPage = () => {
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            const currentRef = sectionRef.current;
             if (currentRef) {
                 observer.unobserve(currentRef);
             }
@@ -126,7 +127,13 @@ const ProductsPage = () => {
     }, []);
 
     return (
-        <div className="pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 xl:pb-32 bg-gray-50 overflow-hidden relative" ref={sectionRef}>
+        <div className="bg-gray-50 overflow-hidden relative" ref={sectionRef}>
+            {/* Dark Header for Navbar */}
+            <div className="relative h-20 bg-gradient-to-r from-[#0f172a] via-[#1E013A] to-[#00224A]">
+                <Navbar />
+            </div>
+            
+            <div className="pb-12 sm:pb-16 lg:pb-20 xl:pb-32">
             {/* Subtle background pattern */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-20 left-10 w-32 h-32 border border-neoncyan/20 rounded-full animate-pulse"></div>
@@ -227,6 +234,7 @@ const ProductsPage = () => {
                         <h4 className='text-sm sm:text-base lg:text-lg font-semibold text-center sm:text-left'>Scalable Solutions</h4>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

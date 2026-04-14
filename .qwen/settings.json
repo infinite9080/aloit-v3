@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(npm run *)",
-      "Bash(lsof *)"
+      "Bash(lsof *)",
+      "Bash(mkdir *)",
+      "Bash(npm install *)",
+      "Bash(npx *)",
+      "Bash(npm ls)",
+      "Bash(do)",
+      "Bash(then)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   },
   "$version": 3

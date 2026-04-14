@@ -2,9 +2,11 @@ import './globals.css';
 import Navbar from './components/Navbar/index';
 import Footer from './components/Footer/index';
 import WhatsAppFloat from './components/WhatsAppFloat/index';
+import ErrorBoundary from './components/ErrorBoundary';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aloitconsultant.com'),
   title: 'AloIT Consultant - Leading IT Solutions & Cybersecurity Services',
   description: 'AloIT Consultant delivers innovative technology consulting, digital transformation services, and cutting-edge cybersecurity solutions. Protect your business with our comprehensive IT security, compliance, and risk management expertise.',
   keywords: 'IT consulting, cybersecurity, digital transformation, IT solutions, security services, compliance, risk management, nIAM, nAMS, nBsuits, nISMA, nBoard, nERIM',
@@ -60,10 +62,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <Footer />
-        <WhatsAppFloat />
+        <ErrorBoundary>
+          <div className="pt-0">
+            {children}
+            <Footer />
+            <WhatsAppFloat />
+          </div>
+        </ErrorBoundary>
       </body>
     </html>
   )

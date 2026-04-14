@@ -16,6 +16,7 @@ const navigation: NavigationItem[] = [
     { name: 'About', href: '/our-team', current: false },
     { name: 'Services', href: '/our-services', current: false },
     { name: 'Products', href: '/products', current: false },
+    { name: 'Career', href: '/career', current: false },
     { name: 'FAQ', href: '/faq', current: false },
 ]
 
@@ -25,35 +26,14 @@ function classNames(...classes: string[]) {
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = React.useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
     const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            setIsScrolled(scrollTop > 100);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
     return (
-        <Disclosure as="nav" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${isScrolled
-            ? 'bg-transparent mt-3'
-            : 'bg-transparent mt-3'
-            }`}>
+        <Disclosure as="nav" className="absolute top-0 left-0 right-0 z-50 transition-all duration-300 ease-out" style={{ backgroundColor: 'transparent' }}>
             <>
-                <div className={`transition-all duration-500 ease-in-out ${isScrolled
-                    ? 'mx-auto max-w-7xl px-4 lg:px-8 transform scale-95'
-                    : 'mx-auto max-w-7xl px-4 lg:px-8 transform scale-100'
-                    }`}>
-                    <div className={`transition-all duration-500 ease-in-out ${isScrolled
-                        ? 'bg-white/70 backdrop-blur-xl shadow-2xl rounded-full border border-white/30'
-                        : 'bg-white/60 backdrop-blur-xl shadow-xl rounded-full border border-white/30'
-                        }`}>
-                        <div className={`relative flex items-center justify-between transition-all duration-500 ease-in-out ${isScrolled ? 'h-12 py-2' : 'h-16 py-3'
-                            }`}>
+                <div className="mx-auto max-w-7xl px-4 lg:px-8">
+                    <div style={{ backgroundColor: 'transparent' }}>
+                        <div className="relative flex items-center justify-between h-16 py-3">
 
                             {/* LOGO */}
                             <div className="flex flex-shrink-0 items-center">
@@ -64,6 +44,7 @@ const Navbar = () => {
                                         width={60}
                                         height={50}
                                         className="ml-5 transition-opacity duration-300 group-hover:opacity-80"
+                                        style={{ filter: 'brightness(0) invert(1)' }}
                                     />
                                 </Link>
                             </div>
@@ -74,7 +55,7 @@ const Navbar = () => {
                                     <Link
                                         key={item.name}
                                         href={item.href}
-                                        className="relative px-4 py-2 text-darkpurple font-semibold hover:text-neoncyan transition-all duration-300 group"
+                                        className="relative px-4 py-2 text-white font-semibold hover:text-neoncyan transition-all duration-300 group"
                                     >
                                         <span className="relative z-10">{item.name}</span>
                                         <div className="absolute inset-0 bg-neoncyan/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -97,7 +78,7 @@ const Navbar = () => {
                             <div className='flex lg:hidden relative mr-5'>
                                 <button
                                     onClick={() => setIsOpen(!isOpen)}
-                                    className="p-2 rounded-xl bg-neoncyan/10 text-darkpurple hover:bg-neoncyan/20 transition-colors duration-300"
+                                    className="p-2 rounded-xl text-white hover:bg-white/10 transition-colors duration-300"
                                 >
                                     <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                                 </button>

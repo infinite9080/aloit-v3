@@ -42,6 +42,7 @@ const ServicesSection = () => {
     };
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -49,17 +50,16 @@ const ServicesSection = () => {
                 }
             },
             {
-                threshold: 0.2, // Trigger when 20% of the section is visible
+                threshold: 0.2,
                 rootMargin: '0px 0px -50px 0px'
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            const currentRef = sectionRef.current;
             if (currentRef) {
                 observer.unobserve(currentRef);
             }
@@ -325,7 +325,7 @@ const ServicesSection = () => {
     ];
 
     return (
-        <section id="services-section" className="pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 lg:pb-20 xl:pb-32 bg-white relative overflow-hidden" ref={sectionRef}>
+        <section id="services-section" className="pb-12 sm:pb-16 lg:pb-20 xl:pb-32 bg-white relative overflow-hidden" ref={sectionRef}>
             {/* Subtle Background Elements */}
             <div className={`absolute inset-0 opacity-5 transition-all duration-1000 ease-out bg-elements ${isVisible
                 ? 'opacity-5 transform translate-y-0'

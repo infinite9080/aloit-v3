@@ -40,6 +40,12 @@ const ClientLogos = () => {
             logo: "/logos/cisco.svg",
             width: 100,
             height: 40
+        },
+         {
+            name: "MJF",
+            logo: "/logos/mjf logo.png",
+            width: 100,
+            height: 40
         }
     ];
 

@@ -65,6 +65,7 @@ const OurClients = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -77,13 +78,13 @@ const OurClients = () => {
             }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
+            if (currentRef) {
+                observer.unobserve(currentRef);
             }
         };
     }, []);
@@ -208,10 +209,10 @@ const OurClients = () => {
                         <div className='w-2 h-2 sm:w-3 sm:h-3 bg-neoncyan rounded-full'></div>
                         <span className='text-sm sm:text-base text-darkgrey font-medium'>99.9% Uptime Guarantee</span>
                     </div>
-                    <div className='flex items-center gap-2 sm:gap-3'>
+                    {/* <div className='flex items-center gap-2 sm:gap-3'>
                         <div className='w-2 h-2 sm:w-3 sm:h-3 bg-neoncyan rounded-full'></div>
                         <span className='text-sm sm:text-base text-darkgrey font-medium'>ISO 27001 Certified</span>
-                    </div>
+                    </div> */}
                     <div className='flex items-center gap-2 sm:gap-3'>
                         <div className='w-2 h-2 sm:w-3 sm:h-3 bg-neoncyan rounded-full'></div>
                         <span className='text-sm sm:text-base text-darkgrey font-medium'>24/7 Global Support</span>
